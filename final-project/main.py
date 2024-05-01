@@ -59,6 +59,8 @@ class managerDashboard(QWidget):
         self.ui.logOutButton.clicked.connect(self.loginWindow)
         self.ui.serviceReportButton.clicked.connect(self.serviceReport)
         self.ui.purchaseButton.clicked.connect(self.purchase)
+        self.ui.addItemButton.clicked.connect(self.item)
+        self.ui.addEmployeeButton.clicked.connect(self.employee)
 
     def loginWindow(self):
         self.login = logInWindow
@@ -72,6 +74,14 @@ class managerDashboard(QWidget):
     def serviceReport(self):
         self.service = serviceReportDialog()
         self.service.exec()
+
+    def item(self):
+        self.itemdialog = addItemDialog()
+        self.itemdialog.exec()
+
+    def employee(self):
+        self.emp = addEmployeeDialog()
+        self.emp.exec()
 
 class employeeDashboard(QWidget):
     def __init__(self, parent=None):
