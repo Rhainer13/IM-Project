@@ -20,11 +20,13 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QVBoxLayout, QWidget)
 
 class Ui_logInWindow(object):
+
     def setupUi(self, logInWindow):
         if not logInWindow.objectName():
             logInWindow.setObjectName(u"logInWindow")
         logInWindow.resize(877, 622)
         logInWindow.setMaximumSize(QSize(997, 622))
+        self.exitlogin = logInWindow
         self.horizontalLayout = QHBoxLayout(logInWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.leftHalf = QFrame(logInWindow)
@@ -93,6 +95,7 @@ class Ui_logInWindow(object):
         self.logInButton = QPushButton(self.logInForm)
         self.logInButton.setObjectName(u"logInButton")
         self.logInButton.setMinimumSize(QSize(180, 0))
+
 
         self.verticalLayout.addWidget(self.logInButton)
 

@@ -19,12 +19,22 @@ from PySide6.QtWidgets import (QApplication, QColumnView, QFrame, QGridLayout,
     QHBoxLayout, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QSpacerItem, QStackedWidget, QVBoxLayout,
     QWidget)
-
 class Ui_managerDashboard(object):
+
+    def inventoryPagePanel(self):
+        self.stackedWidget.setCurrentIndex(0)
+
+    def employeePagePanel(self):
+        self.stackedWidget.setCurrentIndex(1)
+
+    def historyPagePanel(self):
+        self.stackedWidget.setCurrentIndex(2)
+
     def setupUi(self, managerDashboard):
         if not managerDashboard.objectName():
             managerDashboard.setObjectName(u"managerDashboard")
         managerDashboard.resize(1110, 657)
+        self.logoutmanager = managerDashboard
         self.horizontalLayout_2 = QHBoxLayout(managerDashboard)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.navigationPanel = QFrame(managerDashboard)
@@ -35,16 +45,19 @@ class Ui_managerDashboard(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.inventoryButton = QPushButton(self.navigationPanel)
         self.inventoryButton.setObjectName(u"inventoryButton")
+        self.inventoryButton.clicked.connect(self.inventoryPagePanel)
 
         self.verticalLayout_2.addWidget(self.inventoryButton)
 
         self.employeeButton = QPushButton(self.navigationPanel)
         self.employeeButton.setObjectName(u"employeeButton")
+        self.employeeButton.clicked.connect(self.employeePagePanel)
 
         self.verticalLayout_2.addWidget(self.employeeButton)
 
         self.historyButton = QPushButton(self.navigationPanel)
         self.historyButton.setObjectName(u"historyButton")
+        self.historyButton.clicked.connect(self.historyPagePanel)
 
         self.verticalLayout_2.addWidget(self.historyButton)
 
