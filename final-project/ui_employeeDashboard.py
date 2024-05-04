@@ -32,11 +32,6 @@ class Ui_employeeDashboard(object):
         self.navigationPanel.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.navigationPanel)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.inventoryButton = QPushButton(self.navigationPanel)
-        self.inventoryButton.setObjectName(u"inventoryButton")
-
-        self.verticalLayout.addWidget(self.inventoryButton)
-
         self.serviceReportButton = QPushButton(self.navigationPanel)
         self.serviceReportButton.setObjectName(u"serviceReportButton")
 
@@ -152,7 +147,6 @@ class Ui_employeeDashboard(object):
 
     def retranslateUi(self, employeeDashboard):
         employeeDashboard.setWindowTitle(QCoreApplication.translate("employeeDashboard", u"Employee Dashboard", None))
-        self.inventoryButton.setText(QCoreApplication.translate("employeeDashboard", u"Inventory", None))
         self.serviceReportButton.setText(QCoreApplication.translate("employeeDashboard", u"Service Report", None))
         self.purchaseButton.setText(QCoreApplication.translate("employeeDashboard", u"Purchase", None))
         self.logOutButton.setText(QCoreApplication.translate("employeeDashboard", u"Log Out", None))
