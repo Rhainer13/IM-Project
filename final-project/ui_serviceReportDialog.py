@@ -57,11 +57,15 @@ class Ui_serviceReportDialog(object):
 
         self.horizontalLayout_2.addWidget(self.device)
 
-        self.deviceInput = QLineEdit(self.frame)
-        self.deviceInput.setObjectName(u"deviceInput")
-        self.deviceInput.setMinimumSize(QSize(250, 0))
+        self.comboBox = QComboBox(self.frame)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setMinimumSize(QSize(250, 0))
 
-        self.horizontalLayout_2.addWidget(self.deviceInput, 0, Qt.AlignRight)
+        self.horizontalLayout_2.addWidget(self.comboBox)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -116,53 +120,21 @@ class Ui_serviceReportDialog(object):
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.amountPaid = QLabel(self.frame_2)
-        self.amountPaid.setObjectName(u"amountPaid")
-
-        self.horizontalLayout_5.addWidget(self.amountPaid)
-
-        self.amountPaidInput = QLineEdit(self.frame_2)
-        self.amountPaidInput.setObjectName(u"amountPaidInput")
-        self.amountPaidInput.setMinimumSize(QSize(250, 0))
-
-        self.horizontalLayout_5.addWidget(self.amountPaidInput, 0, Qt.AlignRight)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
-
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.charge = QLabel(self.frame_2)
-        self.charge.setObjectName(u"charge")
+        self.total = QLabel(self.frame_2)
+        self.total.setObjectName(u"total")
 
-        self.horizontalLayout_6.addWidget(self.charge)
+        self.horizontalLayout_6.addWidget(self.total)
 
-        self.chargeOutput = QLineEdit(self.frame_2)
-        self.chargeOutput.setObjectName(u"chargeOutput")
-        self.chargeOutput.setMinimumSize(QSize(250, 0))
+        self.totalOutput = QLineEdit(self.frame_2)
+        self.totalOutput.setObjectName(u"totalOutput")
+        self.totalOutput.setMinimumSize(QSize(250, 0))
 
-        self.horizontalLayout_6.addWidget(self.chargeOutput, 0, Qt.AlignRight)
+        self.horizontalLayout_6.addWidget(self.totalOutput, 0, Qt.AlignRight)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)
-
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.change = QLabel(self.frame_2)
-        self.change.setObjectName(u"change")
-
-        self.horizontalLayout_7.addWidget(self.change)
-
-        self.changeOutput = QLineEdit(self.frame_2)
-        self.changeOutput.setObjectName(u"changeOutput")
-        self.changeOutput.setMinimumSize(QSize(250, 0))
-
-        self.horizontalLayout_7.addWidget(self.changeOutput, 0, Qt.AlignRight)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_7)
 
 
         self.verticalLayout_4.addWidget(self.frame_2)
@@ -196,6 +168,11 @@ class Ui_serviceReportDialog(object):
         serviceReportDialog.setWindowTitle(QCoreApplication.translate("serviceReportDialog", u"Service Report", None))
         self.customerName.setText(QCoreApplication.translate("serviceReportDialog", u"Customer Name", None))
         self.device.setText(QCoreApplication.translate("serviceReportDialog", u"Device", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("serviceReportDialog", u"Phone", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("serviceReportDialog", u"Laptop", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("serviceReportDialog", u"Desktop PC", None))
+        self.comboBox.setItemText(3, QCoreApplication.translate("serviceReportDialog", u"Console", None))
+
         self.technician.setText(QCoreApplication.translate("serviceReportDialog", u"Technician", None))
         self.technicianDropdown.setItemText(0, QCoreApplication.translate("serviceReportDialog", u"person1", None))
         self.technicianDropdown.setItemText(1, QCoreApplication.translate("serviceReportDialog", u"person2", None))
@@ -205,9 +182,7 @@ class Ui_serviceReportDialog(object):
         self.serviceTypeDropdown.setItemText(1, QCoreApplication.translate("serviceReportDialog", u"Repair", None))
         self.serviceTypeDropdown.setItemText(2, QCoreApplication.translate("serviceReportDialog", u"Upgrade", None))
 
-        self.amountPaid.setText(QCoreApplication.translate("serviceReportDialog", u"Amount Paid", None))
-        self.charge.setText(QCoreApplication.translate("serviceReportDialog", u"Charge", None))
-        self.change.setText(QCoreApplication.translate("serviceReportDialog", u"Change", None))
+        self.total.setText(QCoreApplication.translate("serviceReportDialog", u"Total", None))
         self.confirmButton.setText(QCoreApplication.translate("serviceReportDialog", u"Confirm", None))
         self.cancelButton.setText(QCoreApplication.translate("serviceReportDialog", u"Cancel", None))
     # retranslateUi
