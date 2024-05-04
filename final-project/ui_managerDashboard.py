@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QColumnView, QFrame, QGridLayout,
     QHBoxLayout, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QSpacerItem, QStackedWidget, QVBoxLayout,
     QWidget)
+
 class Ui_managerDashboard(object):
 
     def inventoryPagePanel(self):
