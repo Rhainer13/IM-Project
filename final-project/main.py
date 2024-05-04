@@ -3,6 +3,7 @@ import sys
 
 from PySide6.QtWidgets import QApplication, QWidget, QDialog
 
+
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
@@ -114,10 +115,7 @@ class addItemDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_addItemDialog()
         self.ui.setupUi(self)
-
         self.ui.cancelButton.clicked.connect(self.closeDialog)
-
-        self.show()
 
     def closeDialog(self):
         self.close()
@@ -127,10 +125,8 @@ class updateItemDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_updateItemDialog()
         self.ui.setupUi(self)
-
         self.ui.cancelButton.clicked.connect(self.closeDialog)
-        
-        self.show()
+
 
     def closeDialog(self):
         self.close()
@@ -143,8 +139,6 @@ class deleteItemDialog(QDialog):
 
         self.ui.cancelButton.clicked.connect(self.closeDialog)
 
-        self.show()
-
     def closeDialog(self):
         self.close()
 
@@ -153,10 +147,8 @@ class addEmployeeDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_addEmployeeDialog()
         self.ui.setupUi(self)
-
         self.ui.cancelButton.clicked.connect(self.closeDialog)
 
-        self.show()
 
     def closeDialog(self):
         self.close()
@@ -166,10 +158,8 @@ class updateEmployeeDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_updateEmployeeDialog()
         self.ui.setupUi(self)
-
         self.ui.cancelButton.clicked.connect(self.closeDialog)
 
-        self.show()
 
     def closeDialog(self):
         self.close()
@@ -179,10 +169,8 @@ class serviceReportDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_serviceReportDialog()
         self.ui.setupUi(self)
-
         self.ui.cancelButton.clicked.connect(self.closeDialog)
 
-        self.show()
 
     def closeDialog(self):
         self.close()
@@ -192,10 +180,7 @@ class purchaseDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_purchaseDialog()
         self.ui.setupUi(self)
-
         self.ui.cancelButton.clicked.connect(self.closeDialog)
-
-        self.show()
 
     def closeDialog(self):
         self.close()
@@ -206,32 +191,5 @@ if __name__ == "__main__":
 
     logInWindow = logInWindow()
     logInWindow.show()
-
-    '''managerDashboard = managerDashboard()
-    managerDashboard.show()
-
-    employeeDashboard = employeeDashboard()
-    employeeDashboard.show()
-
-    addItemDialog = addItemDialog()
-    addItemDialog.show()
-
-    updateItemDialog = updateItemDialog()
-    updateItemDialog.show()
-
-    deleteItemDialog = deleteItemDialog()
-    deleteItemDialog.show()
-
-    addEmployeeDialog = addEmployeeDialog()
-    addEmployeeDialog.show()
-
-    updateEmployeeDialog = updateEmployeeDialog()
-    updateEmployeeDialog.show()
-
-    serviceReportDialog = serviceReportDialog()
-    serviceReportDialog.show()
-
-    purchaseDialog = purchaseDialog()
-    purchaseDialog.show()'''
 
     sys.exit(app.exec())
