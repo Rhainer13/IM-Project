@@ -346,7 +346,7 @@ class Ui_managerDashboard(object):
 
         self.retranslateUi(managerDashboard)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(managerDashboard)
