@@ -20,6 +20,7 @@ from ui_updateEmployeeDialog import Ui_updateEmployeeDialog
 from ui_serviceReportDialog import Ui_serviceReportDialog
 from ui_purchaseDialog import Ui_purchaseDialog
 
+
 # for widgets
 class logInWindow(QWidget):
     def __init__(self, parent=None):
@@ -29,22 +30,23 @@ class logInWindow(QWidget):
         self.ui.logInButton.clicked.connect(self.loginButton)
 
     def clearText(self):
-        self.ui.lineEdit.clear()
+        self.ui.usernameInput.clear()
         self.ui.passwordInput.clear()
+        self.ui.notification.clear()
 
     def loginButton(self):
-        self.user = self.ui.lineEdit.text()
+        self.usernameInput = self.ui.usernameInput.text()
         self.password = self.ui.passwordInput.text()
-        if self.user == 'admin' and self.password == 'admin123':
+        if self.usernameInput == 'admin' and self.password == 'admin123':
             self.clearText()
             self.login = managerDashboard()
             self.login.show()
             self.close()
-        elif self.user == 'employee' and self.password == '123456':
+        elif self.usernameInput == 'employee' and self.password == '123456':
             self.clearText()
             self.employee()
         else:
-            print('wrong input')
+            self.ui.notification.setText("Invalid")
 
     def employee(self):
         self.loginEmployee = employeeDashboard()
@@ -113,11 +115,25 @@ class addItemDialog(QDialog):
         self.ui = Ui_addItemDialog()
         self.ui.setupUi(self)
 
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+
+        self.show()
+
+    def closeDialog(self):
+        self.close()
+
 class updateItemDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_updateItemDialog()
         self.ui.setupUi(self)
+
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+        
+        self.show()
+
+    def closeDialog(self):
+        self.close()
 
 class deleteItemDialog(QDialog):
     def __init__(self, parent=None):
@@ -125,11 +141,25 @@ class deleteItemDialog(QDialog):
         self.ui = Ui_deleteItemDialog()
         self.ui.setupUi(self)
 
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+
+        self.show()
+
+    def closeDialog(self):
+        self.close()
+
 class addEmployeeDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_addEmployeeDialog()
         self.ui.setupUi(self)
+
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+
+        self.show()
+
+    def closeDialog(self):
+        self.close()
 
 class updateEmployeeDialog(QDialog):
     def __init__(self, parent=None):
@@ -137,17 +167,38 @@ class updateEmployeeDialog(QDialog):
         self.ui = Ui_updateEmployeeDialog()
         self.ui.setupUi(self)
 
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+
+        self.show()
+
+    def closeDialog(self):
+        self.close()
+
 class serviceReportDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_serviceReportDialog()
         self.ui.setupUi(self)
 
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+
+        self.show()
+
+    def closeDialog(self):
+        self.close()
+
 class purchaseDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_purchaseDialog()
         self.ui.setupUi(self)
+
+        self.ui.cancelButton.clicked.connect(self.closeDialog)
+
+        self.show()
+
+    def closeDialog(self):
+        self.close()
 
 
 if __name__ == "__main__":
