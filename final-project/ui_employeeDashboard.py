@@ -24,7 +24,6 @@ class Ui_employeeDashboard(object):
         if not employeeDashboard.objectName():
             employeeDashboard.setObjectName(u"employeeDashboard")
         employeeDashboard.resize(1149, 666)
-        self.logoutemployee = employeeDashboard
         self.horizontalLayout_2 = QHBoxLayout(employeeDashboard)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.navigationPanel = QFrame(employeeDashboard)
@@ -56,6 +55,7 @@ class Ui_employeeDashboard(object):
         self.logOutButton.setObjectName(u"logOutButton")
 
         self.verticalLayout.addWidget(self.logOutButton)
+
 
         self.horizontalLayout_2.addWidget(self.navigationPanel)
 
