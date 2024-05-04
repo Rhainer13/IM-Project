@@ -62,6 +62,7 @@ class Ui_purchaseDialog(object):
         self.technicianDropdown_2 = QComboBox(self.frame)
         self.technicianDropdown_2.addItem("")
         self.technicianDropdown_2.addItem("")
+        self.technicianDropdown_2.addItem("")
         self.technicianDropdown_2.setObjectName(u"technicianDropdown_2")
         self.technicianDropdown_2.setMinimumSize(QSize(250, 0))
 
@@ -177,54 +178,21 @@ class Ui_purchaseDialog(object):
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.horizontalLayout_8 = QHBoxLayout()
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.amountPaid = QLabel(self.frame_2)
-        self.amountPaid.setObjectName(u"amountPaid")
-
-        self.horizontalLayout_8.addWidget(self.amountPaid)
-
-        self.amountPaidInput = QLineEdit(self.frame_2)
-        self.amountPaidInput.setObjectName(u"amountPaidInput")
-        self.amountPaidInput.setMinimumSize(QSize(250, 0))
-
-        self.horizontalLayout_8.addWidget(self.amountPaidInput, 0, Qt.AlignRight)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_8)
-
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.charge = QLabel(self.frame_2)
-        self.charge.setObjectName(u"charge")
+        self.total = QLabel(self.frame_2)
+        self.total.setObjectName(u"total")
 
-        self.horizontalLayout_9.addWidget(self.charge)
+        self.horizontalLayout_9.addWidget(self.total)
 
-        self.chargeOutput = QLineEdit(self.frame_2)
-        self.chargeOutput.setObjectName(u"chargeOutput")
-        self.chargeOutput.setMinimumSize(QSize(250, 0))
+        self.totalOutput = QLineEdit(self.frame_2)
+        self.totalOutput.setObjectName(u"totalOutput")
+        self.totalOutput.setMinimumSize(QSize(250, 0))
 
-        self.horizontalLayout_9.addWidget(self.chargeOutput, 0, Qt.AlignRight)
+        self.horizontalLayout_9.addWidget(self.totalOutput, 0, Qt.AlignRight)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_9)
-
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.change = QLabel(self.frame_2)
-        self.change.setObjectName(u"change")
-
-        self.horizontalLayout_10.addWidget(self.change)
-
-        self.changeOutput = QLineEdit(self.frame_2)
-        self.changeOutput.setObjectName(u"changeOutput")
-        self.changeOutput.setMinimumSize(QSize(250, 0))
-        self.changeOutput.setReadOnly(True)
-
-        self.horizontalLayout_10.addWidget(self.changeOutput, 0, Qt.AlignRight)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_10)
 
 
         self.verticalLayout_4.addWidget(self.frame_2)
@@ -263,6 +231,7 @@ class Ui_purchaseDialog(object):
         self.device.setText(QCoreApplication.translate("purchaseDialog", u"GPU", None))
         self.technicianDropdown_2.setItemText(0, QCoreApplication.translate("purchaseDialog", u"person1", None))
         self.technicianDropdown_2.setItemText(1, QCoreApplication.translate("purchaseDialog", u"person2", None))
+        self.technicianDropdown_2.setItemText(2, QCoreApplication.translate("purchaseDialog", u"asdasdadadasdas", None))
 
         self.technician.setText(QCoreApplication.translate("purchaseDialog", u"Motherboard", None))
         self.technicianDropdown.setItemText(0, QCoreApplication.translate("purchaseDialog", u"person1", None))
@@ -283,14 +252,12 @@ class Ui_purchaseDialog(object):
         self.serviceTypeDropdown_3.setItemText(1, QCoreApplication.translate("purchaseDialog", u"Repair", None))
         self.serviceTypeDropdown_3.setItemText(2, QCoreApplication.translate("purchaseDialog", u"Upgrade", None))
 
-        self.serviceType_4.setText(QCoreApplication.translate("purchaseDialog", u"Storage", None))
+        self.serviceType_4.setText(QCoreApplication.translate("purchaseDialog", u"Fan Cooler", None))
         self.serviceTypeDropdown_4.setItemText(0, QCoreApplication.translate("purchaseDialog", u"Cleaning", None))
         self.serviceTypeDropdown_4.setItemText(1, QCoreApplication.translate("purchaseDialog", u"Repair", None))
         self.serviceTypeDropdown_4.setItemText(2, QCoreApplication.translate("purchaseDialog", u"Upgrade", None))
 
-        self.amountPaid.setText(QCoreApplication.translate("purchaseDialog", u"Amount Paid", None))
-        self.charge.setText(QCoreApplication.translate("purchaseDialog", u"Charge", None))
-        self.change.setText(QCoreApplication.translate("purchaseDialog", u"Change", None))
+        self.total.setText(QCoreApplication.translate("purchaseDialog", u"Total", None))
         self.confirmButton.setText(QCoreApplication.translate("purchaseDialog", u"Confirm", None))
         self.cancelButton.setText(QCoreApplication.translate("purchaseDialog", u"Cancel", None))
     # retranslateUi
