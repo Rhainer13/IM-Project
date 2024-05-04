@@ -20,13 +20,11 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QVBoxLayout, QWidget)
 
 class Ui_logInWindow(object):
-
     def setupUi(self, logInWindow):
         if not logInWindow.objectName():
             logInWindow.setObjectName(u"logInWindow")
         logInWindow.resize(877, 622)
         logInWindow.setMaximumSize(QSize(997, 622))
-        self.exitlogin = logInWindow
         self.horizontalLayout = QHBoxLayout(logInWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.leftHalf = QFrame(logInWindow)
@@ -75,13 +73,13 @@ class Ui_logInWindow(object):
         self.logInForm.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.logInForm)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.lineEdit = QLineEdit(self.logInForm)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMinimumSize(QSize(180, 0))
-        self.lineEdit.setMaxLength(20)
-        self.lineEdit.setClearButtonEnabled(True)
+        self.usernameInput = QLineEdit(self.logInForm)
+        self.usernameInput.setObjectName(u"usernameInput")
+        self.usernameInput.setMinimumSize(QSize(180, 0))
+        self.usernameInput.setMaxLength(20)
+        self.usernameInput.setClearButtonEnabled(True)
 
-        self.verticalLayout.addWidget(self.lineEdit)
+        self.verticalLayout.addWidget(self.usernameInput)
 
         self.passwordInput = QLineEdit(self.logInForm)
         self.passwordInput.setObjectName(u"passwordInput")
@@ -92,10 +90,16 @@ class Ui_logInWindow(object):
 
         self.verticalLayout.addWidget(self.passwordInput)
 
+        self.notification = QLabel(self.logInForm)
+        self.notification.setObjectName(u"notification")
+        self.notification.setMaximumSize(QSize(16777215, 30))
+        self.notification.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout.addWidget(self.notification)
+
         self.logInButton = QPushButton(self.logInForm)
         self.logInButton.setObjectName(u"logInButton")
         self.logInButton.setMinimumSize(QSize(180, 0))
-
 
         self.verticalLayout.addWidget(self.logInButton)
 
@@ -115,8 +119,9 @@ class Ui_logInWindow(object):
         logInWindow.setWindowTitle(QCoreApplication.translate("logInWindow", u"Log In", None))
         self.technicianImage.setText("")
         self.pttImage.setText("")
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("logInWindow", u"Username", None))
+        self.usernameInput.setPlaceholderText(QCoreApplication.translate("logInWindow", u"Username", None))
         self.passwordInput.setPlaceholderText(QCoreApplication.translate("logInWindow", u"Password", None))
+        self.notification.setText("")
         self.logInButton.setText(QCoreApplication.translate("logInWindow", u"Log In", None))
     # retranslateUi
 
