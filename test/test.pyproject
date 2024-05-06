@@ -3,6 +3,6 @@
         "main.py",
         "form.ui",
         "table.ui",
-        "dashboard.ui"
+        "managerDashboard.ui"
     ]
 }

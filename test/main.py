@@ -21,7 +21,7 @@ class Widget(QWidget):
 
 # from ui_table import Ui_EmployeeWindow
 
-from ui_dashboard import Ui_Dashboard
+from ui_managerDashboard import Ui_ManagerDashboard
 from ui_addItemDialog import Ui_AddProductDialog
 from ui_addEmployeeDialog import Ui_AddEmployeeDialog
 from ui_serviceReportDialog import Ui_ServiceReportDialog
@@ -106,10 +106,10 @@ class EmployeeWindow(QWidget):
 '''
 
 # windows
-class Dashboard(QWidget):
+class ManagerDashboard(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.ui = Ui_Dashboard()
+        self.ui = Ui_ManagerDashboard()
         self.ui.setupUi(self)
 
         self.showMaximized()
@@ -383,7 +383,7 @@ if __name__ == "__main__":
     # EmployeeWindow = EmployeeWindow()
     # EmployeeWindow.show()
 
-    Dashboard = Dashboard()
-    Dashboard.show()
+    ManagerDashboard = ManagerDashboard()
+    ManagerDashboard.show()
 
     sys.exit(app.exec())

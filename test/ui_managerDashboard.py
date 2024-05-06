@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashboard.ui'
+## Form generated from reading UI file 'managerDashboard.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -20,14 +20,14 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QSizePolicy, QSpacerItem, QStackedWidget, QTabWidget,
     QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
-class Ui_Dashboard(object):
-    def setupUi(self, Dashboard):
-        if not Dashboard.objectName():
-            Dashboard.setObjectName(u"Dashboard")
-        Dashboard.resize(1104, 686)
-        self.horizontalLayout = QHBoxLayout(Dashboard)
+class Ui_ManagerDashboard(object):
+    def setupUi(self, ManagerDashboard):
+        if not ManagerDashboard.objectName():
+            ManagerDashboard.setObjectName(u"ManagerDashboard")
+        ManagerDashboard.resize(1104, 686)
+        self.horizontalLayout = QHBoxLayout(ManagerDashboard)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.frame = QFrame(Dashboard)
+        self.frame = QFrame(ManagerDashboard)
         self.frame.setObjectName(u"frame")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -74,7 +74,7 @@ class Ui_Dashboard(object):
 
         self.horizontalLayout.addWidget(self.frame)
 
-        self.stackedWidget = QStackedWidget(Dashboard)
+        self.stackedWidget = QStackedWidget(ManagerDashboard)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page = QWidget()
         self.page.setObjectName(u"page")
@@ -256,78 +256,78 @@ class Ui_Dashboard(object):
         self.horizontalLayout.addWidget(self.stackedWidget)
 
 
-        self.retranslateUi(Dashboard)
+        self.retranslateUi(ManagerDashboard)
 
         self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 
-        QMetaObject.connectSlotsByName(Dashboard)
+        QMetaObject.connectSlotsByName(ManagerDashboard)
     # setupUi
 
-    def retranslateUi(self, Dashboard):
-        Dashboard.setWindowTitle(QCoreApplication.translate("Dashboard", u"Form", None))
-        self.inventoryButton.setText(QCoreApplication.translate("Dashboard", u"Inventory", None))
-        self.employeeButton.setText(QCoreApplication.translate("Dashboard", u"Employee", None))
-        self.historyButton.setText(QCoreApplication.translate("Dashboard", u"History", None))
-        self.serviceReportButton.setText(QCoreApplication.translate("Dashboard", u"Service Report", None))
-        self.purchaseReportButton.setText(QCoreApplication.translate("Dashboard", u"Purchase Report", None))
-        self.logOutButton.setText(QCoreApplication.translate("Dashboard", u"Log Out", None))
-        self.inventory.setText(QCoreApplication.translate("Dashboard", u"INVENTORY", None))
-        self.addProductButton.setText(QCoreApplication.translate("Dashboard", u"Add Product", None))
-        self.inventoryTabSearchButton.setText(QCoreApplication.translate("Dashboard", u"Search", None))
-        self.inventoryTabSearchBar.setPlaceholderText(QCoreApplication.translate("Dashboard", u"Search", None))
+    def retranslateUi(self, ManagerDashboard):
+        ManagerDashboard.setWindowTitle(QCoreApplication.translate("ManagerDashboard", u"Manager Dashboard", None))
+        self.inventoryButton.setText(QCoreApplication.translate("ManagerDashboard", u"Inventory", None))
+        self.employeeButton.setText(QCoreApplication.translate("ManagerDashboard", u"Employee", None))
+        self.historyButton.setText(QCoreApplication.translate("ManagerDashboard", u"History", None))
+        self.serviceReportButton.setText(QCoreApplication.translate("ManagerDashboard", u"Service Report", None))
+        self.purchaseReportButton.setText(QCoreApplication.translate("ManagerDashboard", u"Purchase Report", None))
+        self.logOutButton.setText(QCoreApplication.translate("ManagerDashboard", u"Log Out", None))
+        self.inventory.setText(QCoreApplication.translate("ManagerDashboard", u"INVENTORY", None))
+        self.addProductButton.setText(QCoreApplication.translate("ManagerDashboard", u"Add Product", None))
+        self.inventoryTabSearchButton.setText(QCoreApplication.translate("ManagerDashboard", u"Search", None))
+        self.inventoryTabSearchBar.setPlaceholderText(QCoreApplication.translate("ManagerDashboard", u"Search", None))
         ___qtablewidgetitem = self.productTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Dashboard", u"Product ID", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("ManagerDashboard", u"Product ID", None));
         ___qtablewidgetitem1 = self.productTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Dashboard", u"Product Name", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("ManagerDashboard", u"Product Name", None));
         ___qtablewidgetitem2 = self.productTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Dashboard", u"Quantity", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("ManagerDashboard", u"Quantity", None));
         ___qtablewidgetitem3 = self.productTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Dashboard", u"Price", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("ManagerDashboard", u"Price", None));
         ___qtablewidgetitem4 = self.productTable.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Dashboard", u"Category", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("ManagerDashboard", u"Category", None));
         ___qtablewidgetitem5 = self.productTable.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("Dashboard", u"Actions", None));
-        self.employee.setText(QCoreApplication.translate("Dashboard", u"EMPLOYEE", None))
-        self.addEmployeeButton.setText(QCoreApplication.translate("Dashboard", u"Add Employee", None))
-        self.employeeTabSearchButton.setText(QCoreApplication.translate("Dashboard", u"Search", None))
-        self.employeeTabSearchBar.setPlaceholderText(QCoreApplication.translate("Dashboard", u"Search", None))
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("ManagerDashboard", u"Actions", None));
+        self.employee.setText(QCoreApplication.translate("ManagerDashboard", u"EMPLOYEE", None))
+        self.addEmployeeButton.setText(QCoreApplication.translate("ManagerDashboard", u"Add Employee", None))
+        self.employeeTabSearchButton.setText(QCoreApplication.translate("ManagerDashboard", u"Search", None))
+        self.employeeTabSearchBar.setPlaceholderText(QCoreApplication.translate("ManagerDashboard", u"Search", None))
         ___qtablewidgetitem6 = self.employeeTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("Dashboard", u"Employee Id", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("ManagerDashboard", u"Employee Id", None));
         ___qtablewidgetitem7 = self.employeeTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("Dashboard", u"Employee Name", None));
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("ManagerDashboard", u"Employee Name", None));
         ___qtablewidgetitem8 = self.employeeTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("Dashboard", u"Date Hired", None));
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("ManagerDashboard", u"Date Hired", None));
         ___qtablewidgetitem9 = self.employeeTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("Dashboard", u"Address", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("ManagerDashboard", u"Address", None));
         ___qtablewidgetitem10 = self.employeeTable.horizontalHeaderItem(4)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("Dashboard", u"Contact", None));
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("ManagerDashboard", u"Contact", None));
         ___qtablewidgetitem11 = self.employeeTable.horizontalHeaderItem(5)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("Dashboard", u"Charge", None));
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("ManagerDashboard", u"Charge", None));
         ___qtablewidgetitem12 = self.serviceHistoryTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("Dashboard", u"Date", None));
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("ManagerDashboard", u"Date", None));
         ___qtablewidgetitem13 = self.serviceHistoryTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("Dashboard", u"Customer Name", None));
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("ManagerDashboard", u"Customer Name", None));
         ___qtablewidgetitem14 = self.serviceHistoryTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("Dashboard", u"Service Type", None));
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("ManagerDashboard", u"Service Type", None));
         ___qtablewidgetitem15 = self.serviceHistoryTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("Dashboard", u"Payment", None));
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("ManagerDashboard", u"Payment", None));
         ___qtablewidgetitem16 = self.serviceHistoryTable.horizontalHeaderItem(4)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("Dashboard", u"Customer Contact", None));
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("ManagerDashboard", u"Customer Contact", None));
         ___qtablewidgetitem17 = self.serviceHistoryTable.horizontalHeaderItem(5)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("Dashboard", u"Status", None));
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("ManagerDashboard", u"Status", None));
         ___qtablewidgetitem18 = self.serviceHistoryTable.horizontalHeaderItem(6)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("Dashboard", u"Actions", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Dashboard", u"Service History", None))
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("ManagerDashboard", u"Actions", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("ManagerDashboard", u"Service History", None))
         ___qtablewidgetitem19 = self.purchaseHistoryTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem19.setText(QCoreApplication.translate("Dashboard", u"Date", None));
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("ManagerDashboard", u"Date", None));
         ___qtablewidgetitem20 = self.purchaseHistoryTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem20.setText(QCoreApplication.translate("Dashboard", u"Customer Name", None));
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("ManagerDashboard", u"Customer Name", None));
         ___qtablewidgetitem21 = self.purchaseHistoryTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem21.setText(QCoreApplication.translate("Dashboard", u"Customer Contact", None));
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("ManagerDashboard", u"Customer Contact", None));
         ___qtablewidgetitem22 = self.purchaseHistoryTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem22.setText(QCoreApplication.translate("Dashboard", u"Payment", None));
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Dashboard", u"Purchase History", None))
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("ManagerDashboard", u"Payment", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("ManagerDashboard", u"Purchase History", None))
     # retranslateUi
 

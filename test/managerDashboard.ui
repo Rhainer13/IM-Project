@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EmployeeDashboard</class>
- <widget class="QWidget" name="EmployeeDashboard">
+ <class>ManagerDashboard</class>
+ <widget class="QWidget" name="ManagerDashboard">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Manager Dashboard</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -97,7 +97,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -118,14 +118,14 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QPushButton" name="addItemButton">
+           <widget class="QPushButton" name="addProductButton">
             <property name="text">
-             <string>Add Item</string>
+             <string>Add Product</string>
             </property>
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="QPushButton" name="searchButton">
+           <widget class="QPushButton" name="inventoryTabSearchButton">
             <property name="text">
              <string>Search</string>
             </property>
@@ -145,7 +145,7 @@
            </spacer>
           </item>
           <item row="1" column="2">
-           <widget class="QLineEdit" name="searchBar">
+           <widget class="QLineEdit" name="inventoryTabSearchBar">
             <property name="placeholderText">
              <string>Search</string>
             </property>
@@ -155,7 +155,10 @@
         </widget>
        </item>
        <item>
-        <widget class="QTableWidget" name="inventoryTable">
+        <widget class="QTableWidget" name="productTable">
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
          <column>
           <property name="text">
            <string>Product ID</string>
@@ -216,7 +219,7 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="QPushButton" name="searchButton_2">
+           <widget class="QPushButton" name="employeeTabSearchButton">
             <property name="text">
              <string>Search</string>
             </property>
@@ -236,7 +239,7 @@
            </spacer>
           </item>
           <item row="1" column="2">
-           <widget class="QLineEdit" name="searchBar_2">
+           <widget class="QLineEdit" name="employeeTabSearchBar">
             <property name="placeholderText">
              <string>Search</string>
             </property>
@@ -301,9 +304,12 @@
           <attribute name="title">
            <string>Service History</string>
           </attribute>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <item row="0" column="0">
-            <widget class="QTableWidget" name="tableWidget">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QTableWidget" name="serviceHistoryTable">
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>150</number>
+             </attribute>
              <column>
               <property name="text">
                <string>Date</string>
@@ -347,9 +353,12 @@
           <attribute name="title">
            <string>Purchase History</string>
           </attribute>
-          <layout class="QGridLayout" name="gridLayout_5">
-           <item row="0" column="0">
-            <widget class="QTableWidget" name="tableWidget_2">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QTableWidget" name="purchaseHistoryTable">
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>150</number>
+             </attribute>
              <column>
               <property name="text">
                <string>Date</string>
