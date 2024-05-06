@@ -20,8 +20,12 @@ class Widget(QWidget):
 '''
 
 # from ui_table import Ui_EmployeeWindow
-from ui_employeeDashboard import Ui_EmployeeDashboard
+
+from ui_dashboard import Ui_Dashboard
+from ui_addItemDialog import Ui_AddProductDialog
 from ui_addEmployeeDialog import Ui_AddEmployeeDialog
+from ui_serviceReportDialog import Ui_ServiceReportDialog
+from ui_purchaseReportDialog import Ui_PurchaseReportDialog
 
 '''
 class EmployeeWindow(QWidget):
@@ -101,21 +105,115 @@ class EmployeeWindow(QWidget):
         connection.close()
 '''
 
-class EmployeeDashboard(QWidget):
+# windows
+class Dashboard(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.ui = Ui_EmployeeDashboard()
+        self.ui = Ui_Dashboard()
         self.ui.setupUi(self)
 
+        self.showMaximized()
+
+        self.ui.serviceReportButton.clicked.connect(self.openServiceReportDialog)
+        self.ui.purchaseReportButton.clicked.connect(self.openPurchaseReportDialog)
+        self.ui.logOutButton
+
+        # pre-load all table data
+        self.loadProductTable()
         self.loadEmployeeTable()
-        self.ui.addEmployeeButton.clicked.connect(self.openAddEmployeeDialog)
-        # self.ui.searchButton_2.clicked.connect(self.searchEmployee)
+
+        # inventory tab
         self.ui.inventoryButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.addProductButton.clicked.connect(self.openAddProductDialog)
+        self.ui.inventoryTabSearchBar.textChanged.connect(self.searchProduct)
+        # self.ui.searchButton_2.clicked.connect(self.searchEmployee)
+        
+        # employee tab
         self.ui.employeeButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
-        self.ui.searchBar_2.textChanged.connect(self.searchEmployee)
+        self.ui.addEmployeeButton.clicked.connect(self.openAddEmployeeDialog)
+        self.ui.employeeTabSearchBar.textChanged.connect(self.searchEmployee)
+        # self.ui.searchButton_2.clicked.connect(self.searchEmployee)
 
-        # self.ui.employeeTable. # wa gitiwas ni niez kaboang sad nimo oi
+        # history tab
+        self.ui.historyButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
 
+    # service report dialog
+    def openServiceReportDialog(self):
+        self.ServiceReportDialog = ServiceReportDialog()
+        self.ServiceReportDialog.exec()
+
+    # purchase dialog
+    def openPurchaseReportDialog(self):
+        self.PurchaseReportDialog = PurchaseReportDialog()
+        self.PurchaseReportDialog.exec()
+
+    # inventory functions
+    def openAddProductDialog(self):
+        self.AddProductDialog = AddProductDialog()
+        self.AddProductDialog.exec()
+        self.loadProductTable()
+
+    def loadProductTable(self):
+        self.connection = psycopg2.connect(     database    = "ptt_sample",
+                                                user        = "postgres",
+                                                host        = "localhost",
+                                                password    = "p05tgr35ql",
+                                                port        = 5432)
+
+        self.cursor = self.connection.cursor()
+
+        self.command =  """
+                            SELECT * FROM INVENTORY;
+                        """
+
+        self.cursor.execute(self.command)
+
+        self.result = self.cursor.fetchall()
+
+        self.ui.productTable.setRowCount(0)
+
+        for row_number, row_data in enumerate(self.result):
+            self.ui.productTable.insertRow(row_number) # wako kasabot ari
+            for column_number, column_data in enumerate(row_data):
+                self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data))) # wako kassabot sa qtablewidgetitem
+
+        self.connection.commit()
+        self.cursor.close()
+        self.connection.close()
+
+    def searchProduct(self):
+        self.search = self.ui.inventoryTabSearchBar.text()
+
+        self.connection = psycopg2.connect(     database    = "ptt_sample",
+                                                user        = "postgres",
+                                                host        = "localhost",
+                                                password    = "p05tgr35ql",
+                                                port        = 5432)
+
+        self.cursor = self.connection.cursor()
+
+        self.command = f"""   
+                            SELECT *
+                            FROM INVENTORY
+                            WHERE PROD_NAME LIKE '%{self.search}%';
+                        """
+
+        self.cursor.execute(self.command)
+
+        self.result = self.cursor.fetchall()
+
+        self.ui.productTable.setRowCount(0)
+
+        for row_number, row_data in enumerate(self.result):
+            self.ui.productTable.insertRow(row_number) # wako kasabot ari
+            for column_number, column_data in enumerate(row_data):
+                self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data))) # wako kassabot sa qtablewidgetitem
+
+        self.connection.commit()
+        self.cursor.close()
+        self.connection.close()
+
+    # employee functions
     def loadEmployeeTable(self):
         self.connection = psycopg2.connect(     database    = "ptt_sample",
                                                 user        = "postgres",
@@ -151,7 +249,7 @@ class EmployeeDashboard(QWidget):
         self.loadEmployeeTable()
 
     def searchEmployee(self):
-        self.search = self.ui.searchBar_2.text()
+        self.search = self.ui.employeeTabSearchBar.text()
 
         self.connection = psycopg2.connect(     database    = "ptt_sample",
                                                 user        = "postgres",
@@ -182,6 +280,7 @@ class EmployeeDashboard(QWidget):
         self.cursor.close()
         self.connection.close()
 
+# dialogs
 class AddEmployeeDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -220,6 +319,60 @@ class AddEmployeeDialog(QDialog):
 
         self.close()
         
+class AddProductDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_AddProductDialog()
+        self.ui.setupUi(self)
+
+        self.ui.confirmButton.clicked.connect(self.addProductToDatabase)
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
+
+    def addProductToDatabase(self):
+        self.prodName = self.ui.productNameInput.text()
+        self.prodQty = self.ui.quantityInput.text()
+        self.prodPrice = self.ui.priceInput.text()
+        self.prodCat = self.ui.categoryDropdown.currentText()
+        
+        # print(self.prodCat)
+        
+        self.connection = psycopg2.connect(     database    = "ptt_sample",
+                                                user        = "postgres",
+                                                host        = "localhost",
+                                                password    = "p05tgr35ql",
+                                                port        = 5432)
+
+        self.cursor = self.connection.cursor()
+
+        self.command = f"""   INSERT INTO INVENTORY (PROD_NAME, PROD_QTY, PROD_PRICE, PROD_CAT)
+                           VALUES
+                            ('{self.prodName}', '{self.prodQty}', '{self.prodPrice}', '{self.prodCat}');
+                        """
+
+        self.cursor.execute(self.command)
+
+        self.connection.commit()
+   
+        self.cursor.close()
+        self.connection.close()
+
+        self.close()
+        
+class ServiceReportDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_ServiceReportDialog()
+        self.ui.setupUi(self)
+
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
+
+class PurchaseReportDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_PurchaseReportDialog()
+        self.ui.setupUi(self)
+
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -230,7 +383,7 @@ if __name__ == "__main__":
     # EmployeeWindow = EmployeeWindow()
     # EmployeeWindow.show()
 
-    EmployeeDashboard = EmployeeDashboard()
-    EmployeeDashboard.show()
+    Dashboard = Dashboard()
+    Dashboard.show()
 
     sys.exit(app.exec())
