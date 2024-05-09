@@ -1,8 +1,0 @@
-{
-    "files": [
-        "main.py",
-        "form.ui",
-        "table.ui",
-        "managerDashboard.ui"
-    ]
-}
