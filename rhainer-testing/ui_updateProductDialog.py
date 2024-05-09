@@ -19,52 +19,52 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QFormLayout,
     QFrame, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
-class Ui_UdpateProductDialog(object):
-    def setupUi(self, UdpateProductDialog):
-        if not UdpateProductDialog.objectName():
-            UdpateProductDialog.setObjectName(u"UdpateProductDialog")
-        UdpateProductDialog.resize(483, 316)
-        UdpateProductDialog.setMaximumSize(QSize(483, 316))
-        self.verticalLayout_2 = QVBoxLayout(UdpateProductDialog)
+class Ui_UpdateProductDialog(object):
+    def setupUi(self, UpdateProductDialog):
+        if not UpdateProductDialog.objectName():
+            UpdateProductDialog.setObjectName(u"UpdateProductDialog")
+        UpdateProductDialog.resize(483, 316)
+        UpdateProductDialog.setMaximumSize(QSize(483, 316))
+        self.verticalLayout_2 = QVBoxLayout(UpdateProductDialog)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.formLayout = QFormLayout()
         self.formLayout.setObjectName(u"formLayout")
-        self.label = QLabel(UdpateProductDialog)
+        self.label = QLabel(UpdateProductDialog)
         self.label.setObjectName(u"label")
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
 
-        self.productNameInput = QLineEdit(UdpateProductDialog)
+        self.productNameInput = QLineEdit(UpdateProductDialog)
         self.productNameInput.setObjectName(u"productNameInput")
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.productNameInput)
 
-        self.label_2 = QLabel(UdpateProductDialog)
+        self.label_2 = QLabel(UpdateProductDialog)
         self.label_2.setObjectName(u"label_2")
 
         self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
 
-        self.quantityInput = QLineEdit(UdpateProductDialog)
+        self.quantityInput = QLineEdit(UpdateProductDialog)
         self.quantityInput.setObjectName(u"quantityInput")
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.quantityInput)
 
-        self.label_3 = QLabel(UdpateProductDialog)
+        self.label_3 = QLabel(UpdateProductDialog)
         self.label_3.setObjectName(u"label_3")
 
         self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_3)
 
-        self.priceInput = QLineEdit(UdpateProductDialog)
+        self.priceInput = QLineEdit(UpdateProductDialog)
         self.priceInput.setObjectName(u"priceInput")
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.priceInput)
 
-        self.label_4 = QLabel(UdpateProductDialog)
+        self.label_4 = QLabel(UpdateProductDialog)
         self.label_4.setObjectName(u"label_4")
 
         self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_4)
 
-        self.categoryChoice = QComboBox(UdpateProductDialog)
+        self.categoryChoice = QComboBox(UpdateProductDialog)
         self.categoryChoice.addItem("")
         self.categoryChoice.addItem("")
         self.categoryChoice.addItem("")
@@ -83,7 +83,7 @@ class Ui_UdpateProductDialog(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.frame = QFrame(UdpateProductDialog)
+        self.frame = QFrame(UpdateProductDialog)
         self.frame.setObjectName(u"frame")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -103,26 +103,26 @@ class Ui_UdpateProductDialog(object):
         self.verticalLayout_2.addWidget(self.frame)
 
 
-        self.retranslateUi(UdpateProductDialog)
+        self.retranslateUi(UpdateProductDialog)
 
-        QMetaObject.connectSlotsByName(UdpateProductDialog)
+        QMetaObject.connectSlotsByName(UpdateProductDialog)
     # setupUi
 
-    def retranslateUi(self, UdpateProductDialog):
-        UdpateProductDialog.setWindowTitle(QCoreApplication.translate("UdpateProductDialog", u"Dialog", None))
-        self.label.setText(QCoreApplication.translate("UdpateProductDialog", u"Product Name", None))
-        self.label_2.setText(QCoreApplication.translate("UdpateProductDialog", u"Quantity", None))
-        self.label_3.setText(QCoreApplication.translate("UdpateProductDialog", u"Price", None))
-        self.label_4.setText(QCoreApplication.translate("UdpateProductDialog", u"Category", None))
-        self.categoryChoice.setItemText(0, QCoreApplication.translate("UdpateProductDialog", u"CPU", None))
-        self.categoryChoice.setItemText(1, QCoreApplication.translate("UdpateProductDialog", u"GPU", None))
-        self.categoryChoice.setItemText(2, QCoreApplication.translate("UdpateProductDialog", u"RAM", None))
-        self.categoryChoice.setItemText(3, QCoreApplication.translate("UdpateProductDialog", u"Motherboard", None))
-        self.categoryChoice.setItemText(4, QCoreApplication.translate("UdpateProductDialog", u"Power Supply", None))
-        self.categoryChoice.setItemText(5, QCoreApplication.translate("UdpateProductDialog", u"Fan Coller", None))
-        self.categoryChoice.setItemText(6, QCoreApplication.translate("UdpateProductDialog", u"Tower Case", None))
+    def retranslateUi(self, UpdateProductDialog):
+        UpdateProductDialog.setWindowTitle(QCoreApplication.translate("UpdateProductDialog", u"Dialog", None))
+        self.label.setText(QCoreApplication.translate("UpdateProductDialog", u"Product Name", None))
+        self.label_2.setText(QCoreApplication.translate("UpdateProductDialog", u"Quantity", None))
+        self.label_3.setText(QCoreApplication.translate("UpdateProductDialog", u"Price", None))
+        self.label_4.setText(QCoreApplication.translate("UpdateProductDialog", u"Category", None))
+        self.categoryChoice.setItemText(0, QCoreApplication.translate("UpdateProductDialog", u"CPU", None))
+        self.categoryChoice.setItemText(1, QCoreApplication.translate("UpdateProductDialog", u"GPU", None))
+        self.categoryChoice.setItemText(2, QCoreApplication.translate("UpdateProductDialog", u"RAM", None))
+        self.categoryChoice.setItemText(3, QCoreApplication.translate("UpdateProductDialog", u"Motherboard", None))
+        self.categoryChoice.setItemText(4, QCoreApplication.translate("UpdateProductDialog", u"Power Supply", None))
+        self.categoryChoice.setItemText(5, QCoreApplication.translate("UpdateProductDialog", u"Fan Coller", None))
+        self.categoryChoice.setItemText(6, QCoreApplication.translate("UpdateProductDialog", u"Tower Case", None))
 
-        self.confirmButton.setText(QCoreApplication.translate("UdpateProductDialog", u"Confirm", None))
-        self.cancelButton.setText(QCoreApplication.translate("UdpateProductDialog", u"Cancel", None))
+        self.confirmButton.setText(QCoreApplication.translate("UpdateProductDialog", u"Confirm", None))
+        self.cancelButton.setText(QCoreApplication.translate("UpdateProductDialog", u"Cancel", None))
     # retranslateUi
 

@@ -4,6 +4,7 @@
         "form.ui",
         "logInWindow.ui",
         "managerDashboard.ui",
-        "addProductDialog.ui"
+        "addProductDialog.ui",
+        "deleteProductDialog.ui"
     ]
 }
