@@ -9,12 +9,16 @@ import sys
 import psycopg2
 
 from PySide6.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QTableWidgetItem, QDialog
+from PySide6.QtCore import Signal
 from ui_logInWindow import Ui_LogInWindow
 from ui_managerDashboard import Ui_ManagerDashboard
 
 from ui_addProductDialog import Ui_AddProductDialog
 from ui_updateProductDialog import Ui_UpdateProductDialog
 from ui_deleteProductDialog import Ui_DeleteProductDialog
+
+from ui_addEmployeeDialog import Ui_AddEmployeeDialog
+from ui_updateEmployeeDialog import Ui_UpdateEmployeeDialog
 
 '''
 from ui_form import Ui_Widget
@@ -69,6 +73,7 @@ class ManagerDashboard(QWidget):
         self.ui.refreshButton.clicked.connect(self.loadProductTable)
 
         # employee tab
+        self.ui.addEmployeeButton.clicked.connect(self.openAddEmployeeDialog)
 
     def searchInventory(self):
         self.searched = self.ui.searchBar.text()
@@ -100,10 +105,10 @@ class ManagerDashboard(QWidget):
 
         for row_number, row_data in enumerate(self.result):
             self.ui.productTable.insertRow(row_number)
+            update_deleteButton = buttonWidget(row_number, row_data, self)
+            
             for column_number, column_data in enumerate(row_data):
                 self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-
-                update_deleteButton = buttonWidget(row_number, row_data)
                 self.ui.productTable.setCellWidget(row_number,5,update_deleteButton)
                 self.ui.productTable.setRowHeight(row_number, 50)
 
@@ -130,10 +135,10 @@ class ManagerDashboard(QWidget):
 
         for row_number, row_data in enumerate(self.result):
             self.ui.productTable.insertRow(row_number)
+            update_deleteButton = buttonWidget(row_number, row_data, self)
+
             for column_number, column_data in enumerate(row_data):
-                self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-                
-                update_deleteButton = buttonWidget(row_number, row_data)
+                self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))    
                 self.ui.productTable.setCellWidget(row_number,5,update_deleteButton)
                 self.ui.productTable.setRowHeight(row_number, 50)
 
@@ -154,7 +159,7 @@ class ManagerDashboard(QWidget):
                                            port=5432)
 
         self.cursor = self.connection.cursor()
-        self.command =  """
+        self.command =  f"""
                             SELECT * 
                             FROM
                                 EMPLOYEE
@@ -168,16 +173,21 @@ class ManagerDashboard(QWidget):
 
         for row_number, row_data in enumerate(self.result):
             self.ui.employeeTable.insertRow(row_number)
+            updateButton = employeeTableButtons(row_number, row_data, self)
+            
             for column_number, column_data in enumerate(row_data):
-                self.ui.employeeTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-                
-                update_deleteButton = buttonWidget(row_number, row_data)
-                self.ui.employeeTable.setCellWidget(row_number, 6,update_deleteButton)
+                self.ui.employeeTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))    
+                self.ui.employeeTable.setCellWidget(row_number, 6, updateButton)
                 self.ui.employeeTable.setRowHeight(row_number, 50)
 
         self.connection.commit()
         self.cursor.close()
         self.connection.close()
+
+    def openAddEmployeeDialog(self):
+        self.AddEmployeeDialog = AddEmployeeDialog()
+        self.AddEmployeeDialog.exec()
+        self.loadEmployeeTable()
 
     def logOut(self):
         self.LogInWindow = LogInWindow
@@ -193,7 +203,7 @@ class AddProductDialog(QDialog):
         self.ui.setupUi(self)
 
         self.ui.confirmButton.clicked.connect(self.addProductToDatabase)
-        self.ui.cancelButton.clicked.connect()
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
 
     def addProductToDatabase(self):
         self.prodName = self.ui.productNameInput.text()
@@ -221,10 +231,10 @@ class AddProductDialog(QDialog):
    
         self.cursor.close()
         self.connection.close()
-
         self.close()
 
 class UpdateProductDialog(QDialog):
+    data_update = Signal()
     def __init__(self, product_id, parent=None):
         super().__init__(parent)
         self.ui = Ui_UpdateProductDialog()
@@ -266,10 +276,12 @@ class UpdateProductDialog(QDialog):
 
         self.cursor.close()
         self.connection.close()
-
         self.close()
 
+        self.data_update.emit()
+
 class DeleteProductDialog(QDialog):
+    data_update = Signal()
     def __init__(self, product_id, product_name, parent=None):
         super().__init__(parent)
         self.ui = Ui_DeleteProductDialog()
@@ -304,15 +316,104 @@ class DeleteProductDialog(QDialog):
    
         self.cursor.close()
         self.connection.close()
-
         self.close()
+
+        self.data_update.emit()
+
+class AddEmployeeDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_AddEmployeeDialog()
+        self.ui.setupUi(self)
+
+        self.ui.confirmButton.clicked.connect(self.addEmployeeToDatabase)
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
+    
+    def addEmployeeToDatabase(self):
+        self.empName = self.ui.employeeNameInput.text()
+        self.dateHired = self.ui.dateHiredInput.text()
+        self.address = self.ui.addressInput.text()
+        self.contact = self.ui.contactInput.text()
+        self.charge = self.ui.chargeInput.text()
+
+        self.connection = psycopg2.connect(     database    = "ptt_sample",
+                                                user        = "postgres",
+                                                host        = "localhost",
+                                                password    = "p05tgr35ql",
+                                                port        = 5432)
+
+        self.cursor = self.connection.cursor()
+
+        self.command = f"""
+                           INSERT INTO EMPLOYEE (EMP_NAME, EMP_DATE_HIRED, EMP_ADDR, EMP_CONT, EMP_CHARGE)
+                           VALUES
+                            ('{self.empName}', '{self.dateHired}', '{self.address}', '{self.contact}', '{self.charge}');
+                        """
+
+        self.cursor.execute(self.command)
+
+        self.connection.commit()
+   
+        self.cursor.close()
+        self.connection.close()
+        self.close()
+
+class UpdateEmployeeDialog(QDialog):
+    data_update = Signal()
+    def __init__(self, emp_id, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_UpdateEmployeeDialog()
+        self.ui.setupUi(self)
+
+        self.emp_id = emp_id
+
+        self.ui.confirmButton.clicked.connect(self.updateEmployeeInDatabase)
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
+
+    def updateEmployeeInDatabase(self):
+        self.empName = self.ui.employeeNameInput.text()
+        self.dateHired = self.ui.dateHiredInput.text()
+        self.address = self.ui.addressInput.text()
+        self.contact = self.ui.contactInput.text()
+        self.charge = self.ui.chargeInput.text()
+
+        self.connection = psycopg2.connect(     database    = "ptt_sample",
+                                                user        = "postgres",
+                                                host        = "localhost",
+                                                password    = "p05tgr35ql",
+                                                port        = 5432)
+
+        self.cursor = self.connection.cursor()
+
+        self.command = f"""
+                            UPDATE EMPLOYEE
+                            SET
+                                EMP_NAME = '{self.empName}',    
+                                EMP_DATE_HIRED = '{self.dateHired}',
+                                EMP_ADDR = '{self.address}',    
+                                EMP_CONT = '{self.contact}',    
+                                EMP_CHARGE = '{self.charge}'
+                            WHERE
+                                EMP_ID = '{self.emp_id}';   
+                        """
+
+        self.cursor.execute(self.command)
+
+        self.connection.commit()
+   
+        self.cursor.close()
+        self.connection.close()
+        self.close()
+
+        self.data_update.emit()
 
 # for action buttons
 class buttonWidget(QWidget):
-    def __init__(self, row_number, row_data):
+    def __init__(self, row_number, row_data, manager):
         super().__init__()
         self.row_number = row_number
         self.row_data = row_data
+        self.manager = manager
 
         self.product_id = self.row_data[0]
         self.product_name = self.row_data[1]
@@ -334,12 +435,47 @@ class buttonWidget(QWidget):
 
     def openUpdateProductDialog(self):
         self.UpdateProductDialog = UpdateProductDialog(self.product_id)
+        self.UpdateProductDialog.data_update.connect(self.manager.loadProductTable)
         self.UpdateProductDialog.exec()
 
     def openDeleteProductDialog(self):
         self.DeleteProductDialog = DeleteProductDialog(self.product_id, self.product_name)
+        self.DeleteProductDialog.data_update.connect(self.manager.loadProductTable)
         self.DeleteProductDialog.exec()
- 
+
+class employeeTableButtons(QWidget):
+    def __init__(self, row_number, row_data, manager):
+        super().__init__()
+        self.row_number = row_number
+        self.row_data = row_data
+        self.manager = manager
+
+        self.emp_id = self.row_data[0]
+        self.emp_name = self.row_data[1]
+
+        layout = QHBoxLayout(self)
+        
+        self.update_button = QPushButton("Update", self)
+        self.update_button.setStyleSheet("background-color: blue;")
+        self.update_button.setFixedSize(61,31)
+        self.update_button.clicked.connect(self.openUpdateEmployeeDialog)
+
+        self.delete_button = QPushButton("Delete", self)
+        self.delete_button.setStyleSheet("background-color: red;")
+        self.delete_button.setFixedSize(61, 31)
+        self.delete_button.clicked.connect(self.openDeleteEmployeeDialog)
+
+        layout.addWidget(self.update_button)
+        layout.addWidget(self.delete_button)
+
+    def openUpdateEmployeeDialog(self):
+        self.UpdateEmployeeDialog = UpdateEmployeeDialog(self.emp_id)
+        self.UpdateEmployeeDialog.data_update.connect(self.manager.loadEmployeeTable)
+        self.UpdateEmployeeDialog.exec()
+
+    def openDeleteEmployeeDialog(self):
+        print('delete employee')
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
