@@ -9,11 +9,12 @@ import sys
 import psycopg2
 
 from PySide6.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QTableWidgetItem, QDialog
+from PySide6.QtCore import Signal
 from ui_logInWindow import Ui_LogInWindow
 from ui_managerDashboard import Ui_ManagerDashboard
 
 from ui_addProductDialog import Ui_AddProductDialog
-from ui_updateProductDialog import Ui_UpdateProductDialog
+from ui_updateProductDialog import Ui_UdpateProductDialog
 from ui_deleteProductDialog import Ui_DeleteProductDialog
 
 '''
@@ -34,6 +35,7 @@ class LogInWindow(QWidget):
         self.ui.setupUi(self)
 
         self.ui.logInButton.clicked.connect(self.verifyUser)
+        self.ui.passwordInput.returnPressed.connect(self.verifyUser)
 
     def verifyUser(self):
         if self.ui.usernameInput.text() == 'admin' and self.ui.passwordInput.text() == 'admin':
@@ -52,23 +54,15 @@ class ManagerDashboard(QWidget):
         super().__init__(parent)
         self.ui = Ui_ManagerDashboard()
         self.ui.setupUi(self)
-
-        # load tables
+        # load product table
         self.loadProductTable()
-        self.loadEmployeeTable()
-
         # navigation panel buttons
-        self.ui.inventoryButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
-        self.ui.employeeButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
-        self.ui.historyButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
         self.ui.logOutButton.clicked.connect(self.logOut)
 
         # inventory tab
         self.ui.searchBar.textChanged.connect(self.searchInventory)
         self.ui.addProductButton.clicked.connect(self.openAddProductDialog)
-        self.ui.refreshButton.clicked.connect(self.loadProductTable)
-
-        # employee tab
+        #self.ui.refreshButton.clicked.connect(self.searchInventory)
 
     def searchInventory(self):
         self.searched = self.ui.searchBar.text()
@@ -76,53 +70,49 @@ class ManagerDashboard(QWidget):
         self.connection = psycopg2.connect(database="ptt_sample",
                                            user="postgres",
                                            host="localhost",
-                                           password="p05tgr35ql",
+                                           password="1190716",
                                            port=5432)
 
         self.cursor = self.connection.cursor()
 
-        self.command =  f"""
+        self.command = f"""
                             SELECT * 
                             FROM 
                                 INVENTORY
                             WHERE 
-                                PROD_NAME ILIKE '%{self.searched}%' 
-                                OR PROD_CAT ILIKE '%{self.searched}%'
+                                PROD_NAME LIKE '%{self.searched}%' 
+                                OR PROD_CAT LIKE '%{self.searched}%'
                             ORDER 
                                 BY PROD_ID;
                         """
-        
+
         self.cursor.execute(self.command)
-        
+
         self.result = self.cursor.fetchall()
 
         self.ui.productTable.setRowCount(0)
 
         for row_number, row_data in enumerate(self.result):
             self.ui.productTable.insertRow(row_number)
+            update_deleteButton = buttonWidget(row_number, row_data, self)
             for column_number, column_data in enumerate(row_data):
                 self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-
-                update_deleteButton = buttonWidget(row_number, row_data)
-                self.ui.productTable.setCellWidget(row_number,5,update_deleteButton)
+                self.ui.productTable.setCellWidget(row_number, 5, update_deleteButton)
                 self.ui.productTable.setRowHeight(row_number, 50)
 
         self.connection.close()
-    
+
     def loadProductTable(self):
         self.connection = psycopg2.connect(database="ptt_sample",
                                            user="postgres",
                                            host="localhost",
-                                           password="p05tgr35ql",
+                                           password="1190716",
                                            port=5432)
 
         self.cursor = self.connection.cursor()
         self.command =  """
-                            SELECT * 
-                            FROM
-                                INVENTORY
-                            ORDER BY 
-                                PROD_ID;
+                            SELECT * FROM INVENTORY
+                            ORDER BY PROD_ID;
                         """
         self.cursor.execute(self.command)
         self.result = self.cursor.fetchall()
@@ -130,54 +120,18 @@ class ManagerDashboard(QWidget):
 
         for row_number, row_data in enumerate(self.result):
             self.ui.productTable.insertRow(row_number)
+            update_deleteButton = buttonWidget(row_number, row_data, self) #reference from manager dashboard
             for column_number, column_data in enumerate(row_data):
                 self.ui.productTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-                
-                update_deleteButton = buttonWidget(row_number, row_data)
                 self.ui.productTable.setCellWidget(row_number,5,update_deleteButton)
                 self.ui.productTable.setRowHeight(row_number, 50)
 
-        self.connection.commit()
-        self.cursor.close()
         self.connection.close()
 
     def openAddProductDialog(self):
         self.AddProductDialog = AddProductDialog()
         self.AddProductDialog.exec()
         self.loadProductTable()
-
-    def loadEmployeeTable(self):
-        self.connection = psycopg2.connect(database="ptt_sample",
-                                           user="postgres",
-                                           host="localhost",
-                                           password="p05tgr35ql",
-                                           port=5432)
-
-        self.cursor = self.connection.cursor()
-        self.command =  """
-                            SELECT * 
-                            FROM
-                                EMPLOYEE
-                            ORDER BY 
-                                EMP_ID;
-                        """
-        
-        self.cursor.execute(self.command)
-        self.result = self.cursor.fetchall()
-        self.ui.employeeTable.setRowCount(0)
-
-        for row_number, row_data in enumerate(self.result):
-            self.ui.employeeTable.insertRow(row_number)
-            for column_number, column_data in enumerate(row_data):
-                self.ui.employeeTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-                
-                update_deleteButton = buttonWidget(row_number, row_data)
-                self.ui.employeeTable.setCellWidget(row_number, 6,update_deleteButton)
-                self.ui.employeeTable.setRowHeight(row_number, 50)
-
-        self.connection.commit()
-        self.cursor.close()
-        self.connection.close()
 
     def logOut(self):
         self.LogInWindow = LogInWindow
@@ -193,7 +147,7 @@ class AddProductDialog(QDialog):
         self.ui.setupUi(self)
 
         self.ui.confirmButton.clicked.connect(self.addProductToDatabase)
-        self.ui.cancelButton.clicked.connect()
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
 
     def addProductToDatabase(self):
         self.prodName = self.ui.productNameInput.text()
@@ -204,7 +158,7 @@ class AddProductDialog(QDialog):
         self.connection = psycopg2.connect(     database    = "ptt_sample",
                                                 user        = "postgres",
                                                 host        = "localhost",
-                                                password    = "p05tgr35ql",
+                                                password    = "1190716",
                                                 port        = 5432)
 
         self.cursor = self.connection.cursor()
@@ -225,13 +179,14 @@ class AddProductDialog(QDialog):
         self.close()
 
 class UpdateProductDialog(QDialog):
+
+    data_update = Signal()
+    
     def __init__(self, product_id, parent=None):
         super().__init__(parent)
-        self.ui = Ui_UpdateProductDialog()
+        self.ui = Ui_UdpateProductDialog()
         self.ui.setupUi(self)
-
         self.prod_id = product_id
-
         self.ui.confirmButton.clicked.connect(self.updateProductInDatabase)
         self.ui.cancelButton.clicked.connect(lambda: self.close())
 
@@ -240,11 +195,11 @@ class UpdateProductDialog(QDialog):
         self.prodQty = self.ui.quantityInput.text()
         self.prodPrice = self.ui.priceInput.text()
         self.prodCat = self.ui.categoryChoice.currentText()
-        
+
         self.connection = psycopg2.connect(     database    = "ptt_sample",
                                                 user        = "postgres",
                                                 host        = "localhost",
-                                                password    = "p05tgr35ql",
+                                                password    = "1190716",
                                                 port        = 5432)
 
         self.cursor = self.connection.cursor()
@@ -266,53 +221,48 @@ class UpdateProductDialog(QDialog):
 
         self.cursor.close()
         self.connection.close()
-
         self.close()
+        self.data_update.emit()
 
 class DeleteProductDialog(QDialog):
-    def __init__(self, product_id, product_name, parent=None):
+
+    data_update = Signal()
+    def __init__(self, product_id, parent=None):
         super().__init__(parent)
         self.ui = Ui_DeleteProductDialog()
         self.ui.setupUi(self)
-
-        self.product_id = product_id
-        self.product_name = product_name
-
-        self.ui.label.setText(f"Are you sure you want to delete {self.product_name}?")
-
-        self.ui.confirmButton.clicked.connect(self.deleteProductInDatabase)
+        self.prod_id = product_id
+        self.ui.confirmButton.clicked.connect(self.deleteProduct)
         self.ui.cancelButton.clicked.connect(lambda: self.close())
 
-    def deleteProductInDatabase(self):
-        self.connection = psycopg2.connect(     database    = "ptt_sample",
-                                                user        = "postgres",
-                                                host        = "localhost",
-                                                password    = "p05tgr35ql",
-                                                port        = 5432)
+    def deleteProduct(self):
+        self.connection = psycopg2.connect(database="ptt_sample",
+                                           user="postgres",
+                                           host="localhost",
+                                           password="1190716",
+                                           port=5432)
 
         self.cursor = self.connection.cursor()
-
         self.command = f"""
                             DELETE FROM INVENTORY
-                            WHERE
-                                PROD_ID = {self.product_id};
-                        """
-
+                            WHERE PROD_ID = {self.prod_id};
+                       """
         self.cursor.execute(self.command)
 
         self.connection.commit()
-   
+
         self.cursor.close()
         self.connection.close()
-
         self.close()
+        self.data_update.emit()
 
 # for action buttons
 class buttonWidget(QWidget):
-    def __init__(self, row_number, row_data):
+    def __init__(self, row_number, row_data, manager):
         super().__init__()
         self.row_number = row_number
         self.row_data = row_data
+        self.manager = manager
 
         self.product_id = self.row_data[0]
         self.product_name = self.row_data[1]
@@ -334,12 +284,15 @@ class buttonWidget(QWidget):
 
     def openUpdateProductDialog(self):
         self.UpdateProductDialog = UpdateProductDialog(self.product_id)
+        self.UpdateProductDialog.data_update.connect(self.manager.loadProductTable)
         self.UpdateProductDialog.exec()
 
     def openDeleteProductDialog(self):
-        self.DeleteProductDialog = DeleteProductDialog(self.product_id, self.product_name)
+        self.DeleteProductDialog = DeleteProductDialog(self.product_id)
+        self.DeleteProductDialog.data_update.connect(self.manager.loadProductTable)
         self.DeleteProductDialog.exec()
- 
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
