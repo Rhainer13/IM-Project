@@ -1,0 +1,1 @@
+Inventory - add, delete, details

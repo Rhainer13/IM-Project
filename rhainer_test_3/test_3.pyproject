@@ -1,0 +1,9 @@
+{
+    "files": [
+        "main.py",
+        "form.ui",
+        "admin.ui",
+        "addProductDialog.ui",
+        "cartDialog.ui"
+    ]
+}

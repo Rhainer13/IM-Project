@@ -19,6 +19,7 @@ from ui_deleteProductDialog import Ui_DeleteProductDialog
 
 from ui_addEmployeeDialog import Ui_AddEmployeeDialog
 from ui_updateEmployeeDialog import Ui_UpdateEmployeeDialog
+from ui_deleteEmployeeDialog import Ui_DeleteEmployeeDialog
 
 '''
 from ui_form import Ui_Widget
@@ -407,6 +408,46 @@ class UpdateEmployeeDialog(QDialog):
 
         self.data_update.emit()
 
+class DeleteEmployeeDialog(QDialog):
+    data_update = Signal()
+    def __init__(self, emp_id, emp_name, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_DeleteEmployeeDialog()
+        self.ui.setupUi(self)
+
+        self.emp_id = emp_id
+        self.emp_name = emp_name
+
+        self.ui.label.setText(f"Are you sure you want to delete {self.emp_name}?")
+
+        self.ui.confirmButton.clicked.connect(self.deleteEmployeeInDatabase)
+        self.ui.cancelButton.clicked.connect(lambda: self.close())
+
+    def deleteEmployeeInDatabase(self):
+        self.connection = psycopg2.connect(     database    = "ptt_sample",
+                                                user        = "postgres",
+                                                host        = "localhost",
+                                                password    = "p05tgr35ql",
+                                                port        = 5432)
+
+        self.cursor = self.connection.cursor()
+
+        self.command = f"""
+                            DELETE FROM EMPLOYEE
+                            WHERE
+                                EMP_ID = {self.emp_id};
+                        """
+
+        self.cursor.execute(self.command)
+
+        self.connection.commit()
+   
+        self.cursor.close()
+        self.connection.close()
+        self.close()
+
+        self.data_update.emit()
+
 # for action buttons
 class buttonWidget(QWidget):
     def __init__(self, row_number, row_data, manager):
@@ -474,7 +515,9 @@ class employeeTableButtons(QWidget):
         self.UpdateEmployeeDialog.exec()
 
     def openDeleteEmployeeDialog(self):
-        print('delete employee')
+        self.DeleteEmployeeDialog = DeleteEmployeeDialog(self.emp_id, self.emp_name)
+        self.DeleteEmployeeDialog.data_update.connect(self.manager.loadEmployeeTable)
+        self.DeleteEmployeeDialog.exec()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
