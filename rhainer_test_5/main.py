@@ -389,6 +389,7 @@ class AddProductDialog(QDialog):
 
         self.name = self.ui.name.text()
         self.price = self.ui.price.value()
+        self.quantity = self.ui.quantity.value()
 
         match self.category:
             case 'CPU':
@@ -418,6 +419,18 @@ class AddProductDialog(QDialog):
                                 """
                 
                 self.cursor.execute(self.command)
+
+                self.command =  f"""
+                                    update
+                                        inventory
+                                    set
+                                        inv_qty = {self.quantity}
+                                    where
+                                        inv_id = (select max(inv_id) from inventory);
+                                """
+                
+                self.cursor.execute(self.command)
+
                 self.conn.commit()
 
                 self.cursor.close()
@@ -451,6 +464,18 @@ class AddProductDialog(QDialog):
                                 """
                 
                 self.cursor.execute(self.command)
+
+                self.command =  f"""
+                                    update
+                                        inventory
+                                    set
+                                        inv_qty = {self.quantity}
+                                    where
+                                        inv_id = (select max(inv_id) from inventory);
+                                """
+                
+                self.cursor.execute(self.command)
+
                 self.conn.commit()
 
                 self.cursor.close()
@@ -485,6 +510,18 @@ class AddProductDialog(QDialog):
                                 """
                 
                 self.cursor.execute(self.command)
+
+                self.command =  f"""
+                                    update
+                                        inventory
+                                    set
+                                        inv_qty = {self.quantity}
+                                    where
+                                        inv_id = (select max(inv_id) from inventory);
+                                """
+                
+                self.cursor.execute(self.command)
+
                 self.conn.commit()
 
                 self.cursor.close()

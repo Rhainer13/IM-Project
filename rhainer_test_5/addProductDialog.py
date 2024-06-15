@@ -24,7 +24,7 @@ class Ui_AddProductDialog(object):
     def setupUi(self, AddProductDialog):
         if not AddProductDialog.objectName():
             AddProductDialog.setObjectName(u"AddProductDialog")
-        AddProductDialog.resize(247, 278)
+        AddProductDialog.resize(247, 314)
         self.verticalLayout = QVBoxLayout(AddProductDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout = QFormLayout()
@@ -50,6 +50,7 @@ class Ui_AddProductDialog(object):
         self.name = QLineEdit(AddProductDialog)
         self.name.setObjectName(u"name")
         self.name.setMaxLength(25)
+        self.name.setClearButtonEnabled(True)
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.name)
 
@@ -65,6 +66,16 @@ class Ui_AddProductDialog(object):
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.price)
 
+        self.label_10 = QLabel(AddProductDialog)
+        self.label_10.setObjectName(u"label_10")
+
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_10)
+
+        self.quantity = QSpinBox(AddProductDialog)
+        self.quantity.setObjectName(u"quantity")
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.quantity)
+
 
         self.verticalLayout.addLayout(self.formLayout)
 
@@ -76,6 +87,18 @@ class Ui_AddProductDialog(object):
         self.gridLayout.setObjectName(u"gridLayout")
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
+        self.label_2 = QLabel(self.page)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_2)
+
+        self.cpuBrand = QComboBox(self.page)
+        self.cpuBrand.addItem("")
+        self.cpuBrand.addItem("")
+        self.cpuBrand.setObjectName(u"cpuBrand")
+
+        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.cpuBrand)
+
         self.label_5 = QLabel(self.page)
         self.label_5.setObjectName(u"label_5")
 
@@ -88,18 +111,6 @@ class Ui_AddProductDialog(object):
         self.coreCount.setSingleStep(2)
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.coreCount)
-
-        self.label_2 = QLabel(self.page)
-        self.label_2.setObjectName(u"label_2")
-
-        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_2)
-
-        self.cpuBrand = QComboBox(self.page)
-        self.cpuBrand.addItem("")
-        self.cpuBrand.addItem("")
-        self.cpuBrand.setObjectName(u"cpuBrand")
-
-        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.cpuBrand)
 
 
         self.gridLayout.addLayout(self.formLayout_2, 0, 0, 1, 1)
@@ -228,11 +239,12 @@ class Ui_AddProductDialog(object):
         self.label_3.setText(QCoreApplication.translate("AddProductDialog", u"Name", None))
         self.name.setPlaceholderText("")
         self.label_4.setText(QCoreApplication.translate("AddProductDialog", u"Price", None))
-        self.label_5.setText(QCoreApplication.translate("AddProductDialog", u"Core Count", None))
+        self.label_10.setText(QCoreApplication.translate("AddProductDialog", u"Quantity", None))
         self.label_2.setText(QCoreApplication.translate("AddProductDialog", u"Brand", None))
         self.cpuBrand.setItemText(0, QCoreApplication.translate("AddProductDialog", u"Intel", None))
         self.cpuBrand.setItemText(1, QCoreApplication.translate("AddProductDialog", u"AMD", None))
 
+        self.label_5.setText(QCoreApplication.translate("AddProductDialog", u"Core Count", None))
         self.label_6.setText(QCoreApplication.translate("AddProductDialog", u"Brand", None))
         self.ramBrand.setItemText(0, QCoreApplication.translate("AddProductDialog", u"ADATA", None))
         self.ramBrand.setItemText(1, QCoreApplication.translate("AddProductDialog", u"Corsair", None))
