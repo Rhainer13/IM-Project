@@ -34,11 +34,11 @@ class Ui_ServiceDialog(object):
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
 
-        self.lineEdit = QLineEdit(ServiceDialog)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMaxLength(50)
+        self.customer = QLineEdit(ServiceDialog)
+        self.customer.setObjectName(u"customer")
+        self.customer.setMaxLength(50)
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lineEdit)
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.customer)
 
         self.label_2 = QLabel(ServiceDialog)
         self.label_2.setObjectName(u"label_2")

@@ -103,6 +103,7 @@ class Ui_AdminPage(object):
         self.inventoryTable.setCornerButtonEnabled(False)
         self.inventoryTable.horizontalHeader().setProperty("showSortIndicator", False)
         self.inventoryTable.horizontalHeader().setStretchLastSection(True)
+        self.inventoryTable.verticalHeader().setVisible(False)
 
         self.verticalLayout_2.addWidget(self.inventoryTable)
 
@@ -134,6 +135,7 @@ class Ui_AdminPage(object):
         self.staffTable.setObjectName(u"staffTable")
         self.staffTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.staffTable.horizontalHeader().setStretchLastSection(True)
+        self.staffTable.verticalHeader().setVisible(False)
 
         self.verticalLayout_3.addWidget(self.staffTable)
 
@@ -161,6 +163,7 @@ class Ui_AdminPage(object):
         self.purchaseHistoryTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.purchaseHistoryTable.horizontalHeader().setDefaultSectionSize(200)
         self.purchaseHistoryTable.horizontalHeader().setStretchLastSection(True)
+        self.purchaseHistoryTable.verticalHeader().setVisible(False)
 
         self.gridLayout_2.addWidget(self.purchaseHistoryTable, 0, 0, 1, 1)
 
@@ -169,10 +172,27 @@ class Ui_AdminPage(object):
         self.tab_2.setObjectName(u"tab_2")
         self.gridLayout_3 = QGridLayout(self.tab_2)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.tableWidget_2 = QTableWidget(self.tab_2)
-        self.tableWidget_2.setObjectName(u"tableWidget_2")
+        self.serviceHistory = QTableWidget(self.tab_2)
+        if (self.serviceHistory.columnCount() < 6):
+            self.serviceHistory.setColumnCount(6)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        self.serviceHistory.setHorizontalHeaderItem(0, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        self.serviceHistory.setHorizontalHeaderItem(1, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.serviceHistory.setHorizontalHeaderItem(2, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        self.serviceHistory.setHorizontalHeaderItem(3, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        self.serviceHistory.setHorizontalHeaderItem(4, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        self.serviceHistory.setHorizontalHeaderItem(5, __qtablewidgetitem19)
+        self.serviceHistory.setObjectName(u"serviceHistory")
+        self.serviceHistory.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.serviceHistory.horizontalHeader().setStretchLastSection(True)
+        self.serviceHistory.verticalHeader().setVisible(False)
 
-        self.gridLayout_3.addWidget(self.tableWidget_2, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.serviceHistory, 0, 0, 1, 1)
 
         self.tabWidget.addTab(self.tab_2, "")
 
@@ -231,6 +251,18 @@ class Ui_AdminPage(object):
         ___qtablewidgetitem13 = self.purchaseHistoryTable.horizontalHeaderItem(2)
         ___qtablewidgetitem13.setText(QCoreApplication.translate("AdminPage", u"Actions", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("AdminPage", u"Purchase History", None))
+        ___qtablewidgetitem14 = self.serviceHistory.horizontalHeaderItem(0)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("AdminPage", u"Date", None));
+        ___qtablewidgetitem15 = self.serviceHistory.horizontalHeaderItem(1)
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("AdminPage", u"Customer", None));
+        ___qtablewidgetitem16 = self.serviceHistory.horizontalHeaderItem(2)
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("AdminPage", u"Technician", None));
+        ___qtablewidgetitem17 = self.serviceHistory.horizontalHeaderItem(3)
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("AdminPage", u"Device Type", None));
+        ___qtablewidgetitem18 = self.serviceHistory.horizontalHeaderItem(4)
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("AdminPage", u"Service Type", None));
+        ___qtablewidgetitem19 = self.serviceHistory.horizontalHeaderItem(5)
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("AdminPage", u"Total", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("AdminPage", u"Service History", None))
     # retranslateUi
 

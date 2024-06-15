@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys, psycopg2
 
-from PySide6.QtWidgets import QApplication, QWidget, QDialog, QTableWidgetItem, QPushButton, QHBoxLayout, QHeaderView
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QTableWidgetItem, QPushButton, QHBoxLayout, QHeaderView, QComboBox
 from datetime import datetime
 
 # Important:
@@ -49,11 +49,16 @@ class AdminPage(QWidget):
         # purchase history columns
         self.allColumn = self.ui.purchaseHistoryTable.horizontalHeader()
         self.allColumn.setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+
+        # service history columns
+        self.allColumn = self.ui.serviceHistory.horizontalHeader()
+        self.allColumn.setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         
         # load all tables
         self.loadInventoryTable()
         self.loadStaffTable()
         self.loadPurchaseHistory()
+        self.loadServiceHistory()
 
         # navigation panel
         self.ui.inventory.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
@@ -237,6 +242,38 @@ class AdminPage(QWidget):
         self.cursor.close()
         self.conn.close()
 
+    def loadServiceHistory(self):
+        self.conn = psycopg2.connect(database="test_5",
+                                        user="postgres",
+                                        host="localhost",
+                                        password="p05tgr35ql",
+                                        port=5432)
+
+        self.cursor = self.conn.cursor()
+        
+        self.command =  """
+                            select
+                                serv_det_date, serv_det_cust_name, staff_fname,  dev_type, serv_type, serv_det_total_fee
+                            from
+                                service_details natural join staff
+                                natural join device 
+                                natural join service
+                            order by
+                                serv_det_date desc;
+                        """
+        
+        self.cursor.execute(self.command)
+        self.result = self.cursor.fetchall()
+        
+        self.ui.serviceHistory.setRowCount(len(self.result))
+
+        for row_number, row_data in enumerate(self.result):
+            for column_number, column_data in enumerate(row_data):
+                self.ui.serviceHistory.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
+
+        self.cursor.close()
+        self.conn.close()
+
     def openAddProductDialog(self):
         self.addProductDialog = AddProductDialog()
         self.addProductDialog.exec()
@@ -320,6 +357,7 @@ class AdminPage(QWidget):
     def openServiceDialog(self):
         self.serviceDialog = ServiceDialog()
         self.serviceDialog.exec()
+        self.loadServiceHistory()
 
 # dialogs
 class AddProductDialog(QDialog):
@@ -1221,6 +1259,7 @@ class ServiceDialog(QDialog):
         self.loadDropdown()
 
         # confirm and cancel buttons
+        self.ui.confirm.clicked.connect(self.confirmService)
         self.ui.cancel.clicked.connect(lambda: self.close())
 
     def loadDropdown(self):
@@ -1285,6 +1324,37 @@ class ServiceDialog(QDialog):
 
         self.cursor.close()
         self.conn.close()
+
+    def confirmService(self):
+        self.custName = self.ui.customer.text().strip().upper()
+        self.device = self.ui.device.currentData()
+        self.technician = self.ui.technician.currentData()
+        self.servType = self.ui.serviceType.currentData()
+        self.fee = self.ui.additionalFee.value() + 250
+
+        self.conn = psycopg2.connect(database="test_5",
+                                    user="postgres",
+                                    host="localhost",
+                                    password="p05tgr35ql",
+                                    port=5432)
+
+        self.cursor = self.conn.cursor()
+        
+        self.command =  f"""
+                            insert into
+                                service_details(serv_det_date, serv_det_cust_name, serv_det_total_fee, staff_id, dev_id, serv_id)
+                            values
+                                (now(), '{self.custName}', {self.fee}, {self.technician}, {self.device}, {self.servType});
+                        """
+        
+        self.cursor.execute(self.command)
+
+        self.conn.commit()
+
+        self.cursor.close()
+        self.conn.close()
+
+        self.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
