@@ -24,7 +24,7 @@ class Ui_DeleteProductDialog(object):
     def setupUi(self, DeleteProductDialog):
         if not DeleteProductDialog.objectName():
             DeleteProductDialog.setObjectName(u"DeleteProductDialog")
-        DeleteProductDialog.resize(419, 465)
+        DeleteProductDialog.resize(239, 303)
         self.verticalLayout = QVBoxLayout(DeleteProductDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.label_6 = QLabel(DeleteProductDialog)
@@ -97,6 +97,7 @@ class Ui_DeleteProductDialog(object):
 
         self.coreCount = QLineEdit(self.page)
         self.coreCount.setObjectName(u"coreCount")
+        self.coreCount.setReadOnly(True)
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.coreCount)
 
@@ -200,7 +201,7 @@ class Ui_DeleteProductDialog(object):
     # setupUi
 
     def retranslateUi(self, DeleteProductDialog):
-        DeleteProductDialog.setWindowTitle(QCoreApplication.translate("DeleteProductDialog", u"Dialog", None))
+        DeleteProductDialog.setWindowTitle(QCoreApplication.translate("DeleteProductDialog", u"Delete Product", None))
         self.label_6.setText(QCoreApplication.translate("DeleteProductDialog", u"Are you sure you want to delete?", None))
         self.label.setText(QCoreApplication.translate("DeleteProductDialog", u"Category", None))
         self.label_3.setText(QCoreApplication.translate("DeleteProductDialog", u"Name", None))

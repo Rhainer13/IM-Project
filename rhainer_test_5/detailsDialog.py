@@ -24,7 +24,7 @@ class Ui_DetailsDialog(object):
     def setupUi(self, DetailsDialog):
         if not DetailsDialog.objectName():
             DetailsDialog.setObjectName(u"DetailsDialog")
-        DetailsDialog.resize(419, 465)
+        DetailsDialog.resize(241, 276)
         self.verticalLayout = QVBoxLayout(DetailsDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout = QFormLayout()
@@ -58,6 +58,7 @@ class Ui_DetailsDialog(object):
 
         self.price = QLineEdit(DetailsDialog)
         self.price.setObjectName(u"price")
+        self.price.setReadOnly(True)
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.price)
 
@@ -90,6 +91,7 @@ class Ui_DetailsDialog(object):
 
         self.coreCount = QLineEdit(self.page)
         self.coreCount.setObjectName(u"coreCount")
+        self.coreCount.setReadOnly(True)
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.coreCount)
 
@@ -142,6 +144,7 @@ class Ui_DetailsDialog(object):
 
         self.mbBrand = QLineEdit(self.page_3)
         self.mbBrand.setObjectName(u"mbBrand")
+        self.mbBrand.setReadOnly(True)
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.mbBrand)
 
@@ -152,6 +155,7 @@ class Ui_DetailsDialog(object):
 
         self.mbSize = QLineEdit(self.page_3)
         self.mbSize.setObjectName(u"mbSize")
+        self.mbSize.setReadOnly(True)
 
         self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.mbSize)
 
@@ -179,14 +183,14 @@ class Ui_DetailsDialog(object):
 
         self.retranslateUi(DetailsDialog)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(DetailsDialog)
     # setupUi
 
     def retranslateUi(self, DetailsDialog):
-        DetailsDialog.setWindowTitle(QCoreApplication.translate("DetailsDialog", u"Dialog", None))
+        DetailsDialog.setWindowTitle(QCoreApplication.translate("DetailsDialog", u"Product Details", None))
         self.label.setText(QCoreApplication.translate("DetailsDialog", u"Category", None))
         self.label_3.setText(QCoreApplication.translate("DetailsDialog", u"Name", None))
         self.name.setPlaceholderText("")

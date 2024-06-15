@@ -24,7 +24,7 @@ class Ui_EditProductDialog(object):
     def setupUi(self, EditProductDialog):
         if not EditProductDialog.objectName():
             EditProductDialog.setObjectName(u"EditProductDialog")
-        EditProductDialog.resize(419, 465)
+        EditProductDialog.resize(213, 219)
         self.verticalLayout = QVBoxLayout(EditProductDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout = QFormLayout()
@@ -101,7 +101,7 @@ class Ui_EditProductDialog(object):
     # setupUi
 
     def retranslateUi(self, EditProductDialog):
-        EditProductDialog.setWindowTitle(QCoreApplication.translate("EditProductDialog", u"Dialog", None))
+        EditProductDialog.setWindowTitle(QCoreApplication.translate("EditProductDialog", u"Edit Product", None))
         self.label.setText(QCoreApplication.translate("EditProductDialog", u"Category", None))
         self.label_3.setText(QCoreApplication.translate("EditProductDialog", u"Name", None))
         self.name.setPlaceholderText("")

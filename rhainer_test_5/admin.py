@@ -15,8 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
-    QPushButton, QSizePolicy, QStackedWidget, QTableWidget,
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QGridLayout,
+    QHBoxLayout, QHeaderView, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTabWidget, QTableWidget,
     QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_AdminPage(object):
@@ -32,6 +33,39 @@ class Ui_AdminPage(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.inventory = QPushButton(self.frame)
+        self.inventory.setObjectName(u"inventory")
+
+        self.verticalLayout.addWidget(self.inventory)
+
+        self.staff = QPushButton(self.frame)
+        self.staff.setObjectName(u"staff")
+
+        self.verticalLayout.addWidget(self.staff)
+
+        self.history = QPushButton(self.frame)
+        self.history.setObjectName(u"history")
+
+        self.verticalLayout.addWidget(self.history)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
+        self.viewOrder = QPushButton(self.frame)
+        self.viewOrder.setObjectName(u"viewOrder")
+
+        self.verticalLayout.addWidget(self.viewOrder)
+
+        self.service = QPushButton(self.frame)
+        self.service.setObjectName(u"service")
+
+        self.verticalLayout.addWidget(self.service)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
         self.logOut = QPushButton(self.frame)
         self.logOut.setObjectName(u"logOut")
 
@@ -65,6 +99,8 @@ class Ui_AdminPage(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.inventoryTable.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.inventoryTable.setObjectName(u"inventoryTable")
+        self.inventoryTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.inventoryTable.setCornerButtonEnabled(False)
         self.inventoryTable.horizontalHeader().setProperty("showSortIndicator", False)
         self.inventoryTable.horizontalHeader().setStretchLastSection(True)
 
@@ -73,18 +109,96 @@ class Ui_AdminPage(object):
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
+        self.verticalLayout_3 = QVBoxLayout(self.page_2)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.addStaff = QPushButton(self.page_2)
+        self.addStaff.setObjectName(u"addStaff")
+
+        self.verticalLayout_3.addWidget(self.addStaff)
+
+        self.staffTable = QTableWidget(self.page_2)
+        if (self.staffTable.columnCount() < 6):
+            self.staffTable.setColumnCount(6)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.staffTable.setHorizontalHeaderItem(0, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.staffTable.setHorizontalHeaderItem(1, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.staffTable.setHorizontalHeaderItem(2, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.staffTable.setHorizontalHeaderItem(3, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.staffTable.setHorizontalHeaderItem(4, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.staffTable.setHorizontalHeaderItem(5, __qtablewidgetitem10)
+        self.staffTable.setObjectName(u"staffTable")
+        self.staffTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.staffTable.horizontalHeader().setStretchLastSection(True)
+
+        self.verticalLayout_3.addWidget(self.staffTable)
+
         self.stackedWidget.addWidget(self.page_2)
+        self.page_3 = QWidget()
+        self.page_3.setObjectName(u"page_3")
+        self.gridLayout = QGridLayout(self.page_3)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.tabWidget = QTabWidget(self.page_3)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.gridLayout_2 = QGridLayout(self.tab)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.purchaseHistoryTable = QTableWidget(self.tab)
+        if (self.purchaseHistoryTable.columnCount() < 3):
+            self.purchaseHistoryTable.setColumnCount(3)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.purchaseHistoryTable.setHorizontalHeaderItem(0, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.purchaseHistoryTable.setHorizontalHeaderItem(1, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.purchaseHistoryTable.setHorizontalHeaderItem(2, __qtablewidgetitem13)
+        self.purchaseHistoryTable.setObjectName(u"purchaseHistoryTable")
+        self.purchaseHistoryTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.purchaseHistoryTable.horizontalHeader().setDefaultSectionSize(200)
+        self.purchaseHistoryTable.horizontalHeader().setStretchLastSection(True)
+
+        self.gridLayout_2.addWidget(self.purchaseHistoryTable, 0, 0, 1, 1)
+
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.gridLayout_3 = QGridLayout(self.tab_2)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.tableWidget_2 = QTableWidget(self.tab_2)
+        self.tableWidget_2.setObjectName(u"tableWidget_2")
+
+        self.gridLayout_3.addWidget(self.tableWidget_2, 0, 0, 1, 1)
+
+        self.tabWidget.addTab(self.tab_2, "")
+
+        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+
+        self.stackedWidget.addWidget(self.page_3)
 
         self.horizontalLayout.addWidget(self.stackedWidget)
 
 
         self.retranslateUi(AdminPage)
 
+        self.stackedWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(AdminPage)
     # setupUi
 
     def retranslateUi(self, AdminPage):
-        AdminPage.setWindowTitle(QCoreApplication.translate("AdminPage", u"Form", None))
+        AdminPage.setWindowTitle(QCoreApplication.translate("AdminPage", u"Admin Page", None))
+        self.inventory.setText(QCoreApplication.translate("AdminPage", u"Inventory", None))
+        self.staff.setText(QCoreApplication.translate("AdminPage", u"Staff", None))
+        self.history.setText(QCoreApplication.translate("AdminPage", u"History", None))
+        self.viewOrder.setText(QCoreApplication.translate("AdminPage", u"View Orders", None))
+        self.service.setText(QCoreApplication.translate("AdminPage", u"Service", None))
         self.logOut.setText(QCoreApplication.translate("AdminPage", u"Log Out", None))
         self.addProduct.setText(QCoreApplication.translate("AdminPage", u"Add Product", None))
         ___qtablewidgetitem = self.inventoryTable.horizontalHeaderItem(0)
@@ -97,5 +211,26 @@ class Ui_AdminPage(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("AdminPage", u"Quantity", None));
         ___qtablewidgetitem4 = self.inventoryTable.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("AdminPage", u"Actions", None));
+        self.addStaff.setText(QCoreApplication.translate("AdminPage", u"Add Staff Member", None))
+        ___qtablewidgetitem5 = self.staffTable.horizontalHeaderItem(0)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("AdminPage", u"First Name", None));
+        ___qtablewidgetitem6 = self.staffTable.horizontalHeaderItem(1)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("AdminPage", u"Last Name", None));
+        ___qtablewidgetitem7 = self.staffTable.horizontalHeaderItem(2)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("AdminPage", u"Mobile Number", None));
+        ___qtablewidgetitem8 = self.staffTable.horizontalHeaderItem(3)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("AdminPage", u"Address", None));
+        ___qtablewidgetitem9 = self.staffTable.horizontalHeaderItem(4)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("AdminPage", u"Date Hired", None));
+        ___qtablewidgetitem10 = self.staffTable.horizontalHeaderItem(5)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("AdminPage", u"Actions", None));
+        ___qtablewidgetitem11 = self.purchaseHistoryTable.horizontalHeaderItem(0)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("AdminPage", u"Date", None));
+        ___qtablewidgetitem12 = self.purchaseHistoryTable.horizontalHeaderItem(1)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("AdminPage", u"Customer", None));
+        ___qtablewidgetitem13 = self.purchaseHistoryTable.horizontalHeaderItem(2)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("AdminPage", u"Actions", None));
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("AdminPage", u"Purchase History", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("AdminPage", u"Service History", None))
     # retranslateUi
 

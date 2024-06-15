@@ -24,7 +24,7 @@ class Ui_AddProductDialog(object):
     def setupUi(self, AddProductDialog):
         if not AddProductDialog.objectName():
             AddProductDialog.setObjectName(u"AddProductDialog")
-        AddProductDialog.resize(419, 465)
+        AddProductDialog.resize(247, 278)
         self.verticalLayout = QVBoxLayout(AddProductDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout = QFormLayout()
@@ -49,6 +49,7 @@ class Ui_AddProductDialog(object):
 
         self.name = QLineEdit(AddProductDialog)
         self.name.setObjectName(u"name")
+        self.name.setMaxLength(25)
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.name)
 
@@ -218,7 +219,7 @@ class Ui_AddProductDialog(object):
     # setupUi
 
     def retranslateUi(self, AddProductDialog):
-        AddProductDialog.setWindowTitle(QCoreApplication.translate("AddProductDialog", u"Dialog", None))
+        AddProductDialog.setWindowTitle(QCoreApplication.translate("AddProductDialog", u"Add Product", None))
         self.label.setText(QCoreApplication.translate("AddProductDialog", u"Category", None))
         self.category.setItemText(0, QCoreApplication.translate("AddProductDialog", u"CPU", None))
         self.category.setItemText(1, QCoreApplication.translate("AddProductDialog", u"RAM", None))
