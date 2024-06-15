@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>500</height>
+    <width>383</width>
+    <height>260</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
@@ -45,7 +45,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="device_2">
           <property name="text">
@@ -53,14 +53,23 @@
           </property>
          </widget>
         </item>
-        <item alignment="Qt::AlignRight">
-         <widget class="QLineEdit" name="deviceInput_2">
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
-          </property>
+        <item>
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>Choose Device</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Laptop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>PC-Desktop</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -84,12 +93,7 @@
           </property>
           <item>
            <property name="text">
-            <string>person1</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>person2</string>
+            <string>Choose Technician</string>
            </property>
           </item>
          </widget>
@@ -115,6 +119,11 @@
           </property>
           <item>
            <property name="text">
+            <string>Service Type</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Cleaning</string>
            </property>
           </item>
@@ -125,55 +134,14 @@
           </item>
           <item>
            <property name="text">
+            <string>Reinstall OS/Reformat</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Upgrade</string>
            </property>
           </item>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <widget class="QFrame" name="cashInput">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_6">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_15">
-        <item>
-         <widget class="QLabel" name="amountPaid_3">
-          <property name="text">
-           <string>Amount Paid</string>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignRight">
-         <widget class="QLineEdit" name="amountPaidInput_3">
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
-          </property>
          </widget>
         </item>
        </layout>
@@ -199,45 +167,8 @@
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_17">
-        <item>
-         <widget class="QLabel" name="change_3">
-          <property name="text">
-           <string>Change</string>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignRight">
-         <widget class="QLineEdit" name="changeOutput_3">
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
      </layout>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>72</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_7">
