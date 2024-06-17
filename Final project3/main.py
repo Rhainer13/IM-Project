@@ -169,31 +169,101 @@ class AdminPage(QWidget):
 
             # Add 'details' button
             details_button = QPushButton("Details")
-
             details_button.clicked.connect(lambda _, r=row_data: self.openDetailsDialog(r))
+            details_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #3498db; /* Blue */
+                    color: black;
+                    border: 1px solid #2980b9;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }
+                """
+            )
             button_layout.addWidget(details_button)
 
             # Add 'order' button
             order_button = QPushButton("Order")
             order_button.clicked.connect(lambda _, r=row_data: self.order(r))
+            order_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #2ecc71; /* Green */
+                    color: black;
+                    border: 1px solid #27ae60;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #27ae60; /* Darker green on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f8b4c; /* Even darker green when pressed */
+                }
+                """
+            )
             button_layout.addWidget(order_button)
 
             # Add Edit button
             edit_button = QPushButton("Edit")
             edit_button.clicked.connect(lambda _, r=row_data: self.openEditProductDialog(r))
+            edit_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #e67e22; /* Orange */
+                    color: black;
+                    border: 1px solid #d35400;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #d35400; /* Darker orange on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #a04000; /* Even darker orange when pressed */
+                }
+                """
+            )
             button_layout.addWidget(edit_button)
 
             # Add Delete button
             delete_button = QPushButton("Delete")
             delete_button.clicked.connect(lambda _, r=row_data: self.openDeleteProductDialog(r))
+            delete_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #e74c3c; /* Red */
+                    color: black;
+                    border: 1px solid #c0392b;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #c0392b; /* Darker red on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #922b21; /* Even darker red when pressed */
+                }
+                """
+            )
             button_layout.addWidget(delete_button)
 
             # Set the widget with buttons in the cell
             self.ui.inventoryTable.setCellWidget(row_number, len(row_data)-3, button_widget)
 
-        self.cursor.close()
-        self.conn.close()
-
+            self.cursor.close()
+            self.conn.close()
     def loadStaffTable(self):
         self.search = self.ui.staffSearch.text().strip()
 
@@ -237,27 +307,64 @@ class AdminPage(QWidget):
                 # Set the item in the table
                 self.ui.staffTable.setItem(row_number, column_number, item)
 
-            # Create a QWidget to hold order, edit, delete buttons
+                # Your existing code
             button_widget = QWidget()
             button_layout = QHBoxLayout(button_widget)
             button_layout.setContentsMargins(0, 0, 0, 0)
             button_widget.setLayout(button_layout)
 
-            # Add Edit button
+                # Add Edit button
             edit_button = QPushButton("Edit")
             edit_button.clicked.connect(lambda _, r=row_data: self.openEditStaffDialog(r))
+            edit_button.setStyleSheet(
+                    """
+                    QPushButton {
+                        background-color: #3498db; /* Blue */
+                        color: black;
+                        border: 1px solid #2980b9;
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #2980b9; /* Darker blue on hover */
+                    }
+                    QPushButton:pressed {
+                        background-color: #1f618d; /* Even darker blue when pressed */
+                    }
+                    """
+                )
             button_layout.addWidget(edit_button)
 
-            # Add Delete button
+                # Add Delete button
             delete_button = QPushButton("Delete")
             delete_button.clicked.connect(lambda _, r=row_data: self.openDeleteStaffDialog(r))
+            delete_button.setStyleSheet(
+                    """
+                    QPushButton {
+                        background-color: #e74c3c; /* Red */
+                        color: black;
+                        border: 1px solid #c0392b;
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #c0392b; /* Darker red on hover */
+                    }
+                    QPushButton:pressed {
+                        background-color: #922b21; /* Even darker red when pressed */
+                    }
+                    """
+                )
             button_layout.addWidget(delete_button)
 
-            # Set the widget with buttons in the cell
+                # Set the widget with buttons in the cell
             self.ui.staffTable.setCellWidget(row_number, len(row_data)-1, button_widget)
 
-        self.cursor.close()
-        self.conn.close()
+            self.cursor.close()
+            self.conn.close()
+
 
     def loadPurchaseHistory(self):
         self.conn = psycopg2.connect(database="test_5",
@@ -306,17 +413,50 @@ class AdminPage(QWidget):
             button_layout.setContentsMargins(0, 0, 0, 0)
             button_widget.setLayout(button_layout)
 
+            # Common style for all buttons
+            button_style = """
+                QPushButton {
+                    color: black;
+                    border: 1px solid transparent;
+                    padding: 6px 12px;
+                    border-radius: 3px;
+                    font-size: 10px;
+                }
+                QPushButton:hover {
+                    opacity: 0.8;
+                }
+                QPushButton:pressed {
+                    opacity: 0.6;
+                }
+                """
+
             # Add 'receipt' button
             receipt_button = QPushButton("View Receipt")
             receipt_button.clicked.connect(lambda _, r=row_data: self.openPurchaseReceiptDialog(r))
+            receipt_button.setStyleSheet(
+                button_style +
+                """
+                QPushButton {
+                    background-color: #3498db; /* Blue */
+                }
+                QPushButton:hover {
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }
+                """
+            )
             button_layout.addWidget(receipt_button)
+
+            # Set fixed size for the button
+            receipt_button.setFixedSize(300, 30)  # Adjust width and height as needed
 
             # Set the widget with buttons in the cell
             self.ui.purchaseHistoryTable.setCellWidget(row_number, len(row_data), button_widget)
 
-        self.cursor.close()
-        self.conn.close()
-
+            self.cursor.close()
+            self.conn.close()
     def loadServiceHistory(self):
         self.conn = psycopg2.connect(database="test_5",
                                         user="postgres",
@@ -369,20 +509,39 @@ class AdminPage(QWidget):
 
                 # Add 'Update Status' button
             update_button = QPushButton("Update Status")
-
-                # Lambda function to capture row_data at the time of creating the lambda
             update_button.clicked.connect(lambda _, r=row_data: self.openUpdateStatusDialog(r))
 
+                # Check condition and disable button if necessary
             if row_data[7] in ["Completed", "Cancelled"]:
                 update_button.setEnabled(False)
+
+                # Apply stylesheet to customize button appearance
+            update_button.setStyleSheet(
+                    """
+                    QPushButton {
+                        background-color: #e74c3c; /* Red */
+                        color: black;
+                        border: 1px solid #c0392b;
+                        padding: 6px 12px;
+                        border-radius: 3px;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #c0392b; /* Darker red on hover */
+                    }
+                    QPushButton:pressed {
+                        background-color: #922b21; /* Even darker red when pressed */
+                    }
+                    """
+                )
 
             button_layout.addWidget(update_button)
 
                 # Set the widget with buttons in the cell
             self.ui.serviceHistory.setCellWidget(row_number, len(row_data)-1, button_widget)
 
-        self.cursor.close()
-        self.conn.close()
+            self.cursor.close()
+            self.conn.close()
 
     def openAddProductDialog(self):
         self.addProductDialog = AddProductDialog()
@@ -568,8 +727,10 @@ class StaffPage(QWidget):
 
         for row_number, row_data in enumerate(self.result):
             for column_number, column_data in enumerate(row_data[3:]):
-                self.ui.inventoryTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-            
+                item = QTableWidgetItem(str(column_data))
+                item.setTextAlignment(Qt.AlignCenter)  # Center-align the text in the item
+                self.ui.inventoryTable.setItem(row_number, column_number, item)
+
             # Create a QWidget to hold order, edit, delete buttons
             button_widget = QWidget()
             button_layout = QHBoxLayout(button_widget)
@@ -579,18 +740,54 @@ class StaffPage(QWidget):
             # Add 'details' button
             details_button = QPushButton("Details")
             details_button.clicked.connect(lambda _, r=row_data: self.openDetailsDialog(r))
+            details_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #3498db; /* Blue */
+                    color: black;
+                    border: 1px solid #2980b9;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }
+                """
+            )
             button_layout.addWidget(details_button)
 
             # Add 'order' button
             order_button = QPushButton("Order")
             order_button.clicked.connect(lambda _, r=row_data: self.order(r))
+            order_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #27ae60; /* Green */
+                    color: black;
+                    border: 1px solid #219653;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #219653; /* Darker green on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #186a3b; /* Even darker green when pressed */
+                }
+                """
+            )
             button_layout.addWidget(order_button)
 
             # Set the widget with buttons in the cell
             self.ui.inventoryTable.setCellWidget(row_number, len(row_data)-3, button_widget)
 
-        self.cursor.close()
-        self.conn.close()
+            self.cursor.close()
+            self.conn.close()
 
     def loadStaffTable(self):
         self.search = self.ui.staffSearch.text().strip()
@@ -620,15 +817,20 @@ class StaffPage(QWidget):
         self.ui.staffTable.setRowCount(len(self.result))
 
         for row_number, row_data in enumerate(self.result):
-            for column_number, column_data in enumerate(row_data[1:]):
-                if column_number == 4:  # Assuming the first column is the date
-                    # Convert the date string to a datetime object
+            for column_number, column_data in enumerate(row_data[1:]):  # Start from index 1 to skip the first column
+                item = QTableWidgetItem(str(column_data))
+                if column_number == 4:  # Assuming the fifth column (index 4) is the date
+                        # Convert the date string to a datetime object
                     date_object = datetime.strptime(str(column_data), '%Y-%m-%d')
-                    # Format the datetime object to the desired string format
+                        # Format the datetime object to the desired string format
                     formatted_date = date_object.strftime('%B %d, %Y')
-                    self.ui.staffTable.setItem(row_number, column_number, QTableWidgetItem(formatted_date))
-                else:
-                    self.ui.staffTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
+                    item = QTableWidgetItem(formatted_date)
+
+                    # Center-align the text in the item
+                item.setTextAlignment(Qt.AlignCenter)
+
+                    # Set the item in the table
+                self.ui.staffTable.setItem(row_number, column_number, item)
 
         self.cursor.close()
         self.conn.close()
@@ -659,28 +861,67 @@ class StaffPage(QWidget):
 
         for row_number, row_data in enumerate(self.result):
             for column_number, column_data in enumerate(row_data):
+                item = QTableWidgetItem(str(column_data))
                 if column_number == 0:  # Assuming the first column is the date
-                    # Convert the date string to a datetime object
+                        # Convert the date string to a datetime object
                     date_object = datetime.strptime(str(column_data), '%Y-%m-%d %H:%M:%S.%f')
-                    # Format the datetime object to the desired string format
+                        # Format the datetime object to the desired string format
                     formatted_date = date_object.strftime('%B %d, %Y %H:%M')
-                    self.ui.purchaseHistoryTable.setItem(row_number, column_number, QTableWidgetItem(formatted_date))
-                else:
-                    self.ui.purchaseHistoryTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
+                    item = QTableWidgetItem(formatted_date)
 
-            # Create a QWidget to hold order, edit, delete buttons
-            button_widget = QWidget()
-            button_layout = QHBoxLayout(button_widget)
-            button_layout.setContentsMargins(0, 0, 0, 0)
-            button_widget.setLayout(button_layout)
+                    # Center-align the text in the item
+                item.setTextAlignment(Qt.AlignCenter)
 
-            # Add 'receipt' button
-            receipt_button = QPushButton("View Receipt")
-            receipt_button.clicked.connect(lambda _, r=row_data: self.openPurchaseReceiptDialog(r))
-            button_layout.addWidget(receipt_button)
+                    # Set the item in the table
+                self.ui.purchaseHistoryTable.setItem(row_number, column_number, item)
 
-            # Set the widget with buttons in the cell
-            self.ui.purchaseHistoryTable.setCellWidget(row_number, len(row_data), button_widget)
+
+                button_widget = QWidget()
+                button_layout = QHBoxLayout(button_widget)
+                button_layout.setContentsMargins(0, 0, 0, 0)
+                button_widget.setLayout(button_layout)
+
+                            # Common style for all buttons
+                button_style = """
+                                QPushButton {
+                                    color: black;
+                                    border: 1px solid transparent;
+                                    padding: 6px 12px;
+                                    border-radius: 3px;
+                                    font-size: 10px;
+                                }
+                                QPushButton:hover {
+                                    opacity: 0.8;
+                                }
+                                QPushButton:pressed {
+                                    opacity: 0.6;
+                                }
+                                """
+
+                            # Add 'receipt' button
+                receipt_button = QPushButton("View Receipt")
+                receipt_button.clicked.connect(lambda _, r=row_data: self.openPurchaseReceiptDialog(r))
+                receipt_button.setStyleSheet(
+                        button_style +
+                                """
+                                QPushButton {
+                                    background-color: #3498db; /* Blue */
+                                }
+                                QPushButton:hover {
+                                    background-color: #2980b9; /* Darker blue on hover */
+                                }
+                                QPushButton:pressed {
+                                    background-color: #1f618d; /* Even darker blue when pressed */
+                                }
+                                """
+                            )
+                button_layout.addWidget(receipt_button)
+
+                            # Set fixed size for the button
+                receipt_button.setFixedSize(300, 30)  # Adjust width and height as needed
+
+                            # Set the widget with buttons in the cell
+                self.ui.purchaseHistoryTable.setCellWidget(row_number, len(row_data), button_widget)
 
         self.cursor.close()
         self.conn.close()
@@ -713,16 +954,21 @@ class StaffPage(QWidget):
         self.ui.serviceHistory.setRowCount(len(self.result))
 
         for row_number, row_data in enumerate(self.result):
-            for column_number, column_data in enumerate(row_data[1:]):
+            for column_number, column_data in enumerate(row_data[1:]):  # Start from index 1 to skip the first column
+                item = QTableWidgetItem(str(column_data))
                 if column_number == 0:  # Assuming the first column is the date
-                    # Convert the date string to a datetime object
+                        # Convert the date string to a datetime object
                     date_object = datetime.strptime(str(column_data), '%Y-%m-%d %H:%M:%S.%f')
-                    # Format the datetime object to the desired string format
+                        # Format the datetime object to the desired string format
                     formatted_date = date_object.strftime('%B %d, %Y %H:%M')
-                    self.ui.serviceHistory.setItem(row_number, column_number, QTableWidgetItem(formatted_date))
-                else:
-                    self.ui.serviceHistory.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
-                
+                    item = QTableWidgetItem(formatted_date)
+
+                    # Center-align the text in the item
+                item.setTextAlignment(Qt.AlignCenter)
+
+                    # Set the item in the table
+                self.ui.serviceHistory.setItem(row_number, column_number, item)
+
 
             # Create a QWidget to hold order, edit, delete buttons
             button_widget = QWidget()
@@ -730,20 +976,41 @@ class StaffPage(QWidget):
             button_layout.setContentsMargins(0, 0, 0, 0)
             button_widget.setLayout(button_layout)
 
-            # Add 'update status' button
+                            # Add 'Update Status' button
             update_button = QPushButton("Update Status")
             update_button.clicked.connect(lambda _, r=row_data: self.openUpdateStatusDialog(r))
-            
+
+                            # Check condition and disable button if necessary
             if row_data[7] in ["Completed", "Cancelled"]:
                 update_button.setEnabled(False)
-            
+
+                            # Apply stylesheet to customize button appearance
+            update_button.setStyleSheet(
+                                """
+                                QPushButton {
+                                    background-color: #e74c3c; /* Red */
+                                    color: black;
+                                    border: 1px solid #c0392b;
+                                    padding: 6px 12px;
+                                    border-radius: 3px;
+                                    font-size: 12px;
+                                }
+                                QPushButton:hover {
+                                    background-color: #c0392b; /* Darker red on hover */
+                                }
+                                QPushButton:pressed {
+                                    background-color: #922b21; /* Even darker red when pressed */
+                                }
+                                """
+                            )
+
             button_layout.addWidget(update_button)
 
-            # Set the widget with buttons in the cell
+                            # Set the widget with buttons in the cell
             self.ui.serviceHistory.setCellWidget(row_number, len(row_data)-1, button_widget)
 
-        self.cursor.close()
-        self.conn.close()
+            self.cursor.close()
+            self.conn.close()
 
     def openAddProductDialog(self):
         self.addProductDialog = AddProductDialog()
@@ -1181,16 +1448,70 @@ class OrderDialog(QDialog):
             # Add '-' button
             decrease_button = QPushButton("-")
             decrease_button.clicked.connect(lambda _, r=row_data: self.decreaseQty(r))
+            decrease_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #e74c3c; /* Red */
+                    color: black;
+                    border: 1px solid #c0392b;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #c0392b; /* Darker red on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #922b21; /* Even darker red when pressed */
+                }
+                """
+            )
             button_layout.addWidget(decrease_button)
 
             # Add '+' button
             increase_button = QPushButton("+")
             increase_button.clicked.connect(lambda _, r=row_data: self.increaseQty(r))
+            increase_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #3498db; /* Blue */
+                    color: black;
+                    border: 1px solid #2980b9;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }
+                """
+            )
             button_layout.addWidget(increase_button)
 
-            # Add Delete button
+            # Add 'Remove Item' button
             remove_button = QPushButton("Remove Item")
             remove_button.clicked.connect(lambda _, r=row_data: self.removeFromCart(r))
+            remove_button.setStyleSheet(
+                """
+                QPushButton {
+                    background-color: #e67e22; /* Orange */
+                    color: black;
+                    border: 1px solid #d35400;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #d35400; /* Darker orange on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #a04000; /* Even darker orange when pressed */
+                }
+                """
+            )
             button_layout.addWidget(remove_button)
 
             # Set the widget with buttons in the cell
@@ -1672,8 +1993,14 @@ class PurchaseReceiptDialog(QDialog):
         self.ui.purchaseReceiptTable.setRowCount(len(self.result))
 
         for row_number, row_data in enumerate(self.result):
-            for column_number, column_data in enumerate(row_data[1:]):
-                self.ui.purchaseReceiptTable.setItem(row_number, column_number, QTableWidgetItem(str(column_data)))
+            for column_number, column_data in enumerate(row_data[1:], start=1):  # Start from index 1 to skip the first column
+                item = QTableWidgetItem(str(column_data))
+
+                    # Center-align the text in the item
+                item.setTextAlignment(Qt.AlignCenter)
+
+                    # Set the item in the table
+                self.ui.purchaseReceiptTable.setItem(row_number, column_number - 1, item)  # Adjust column index to start from 0
 
         # for total
         self.command =  f"""

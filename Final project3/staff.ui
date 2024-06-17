@@ -205,10 +205,19 @@ background-color: rgba(255, 255, 255, 0.1);
    </item>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+background-color: rgb(107, 138, 122)
+
+}</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -258,6 +267,14 @@ background-color: rgba(255, 255, 255, 0.3);
        </item>
        <item>
         <widget class="QTableWidget" name="inventoryTable">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    background-color: rgb(183, 181, 151);
+    font: 700 9pt &quot;Segoe UI&quot;;
+    color: black; /* Sets the font color to black */
+}
+</string>
+         </property>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
          </property>
@@ -303,11 +320,36 @@ background-color: rgba(255, 255, 255, 0.3);
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+background-color: rgb(107, 138, 122)
+
+}</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLineEdit" name="staffSearch">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+background-color: rgb(218, 211, 190);
+color: black;
+
+
+font-size: 16px;
+padding:2px;
+text-align: center;
+
+
+}
+
+QLineEdit:hover {
+background-color: rgba(255, 255, 255, 0.3);
+}
+
+</string>
+           </property>
            <property name="placeholderText">
             <string>Search</string>
            </property>
@@ -330,6 +372,14 @@ background-color: rgba(255, 255, 255, 0.3);
        </item>
        <item>
         <widget class="QTableWidget" name="staffTable">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    background-color: rgb(183, 181, 151);
+    font: 700 9pt &quot;Segoe UI&quot;;
+    color: black; /* Sets the font color to black */
+}
+</string>
+         </property>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
          </property>
@@ -369,9 +419,26 @@ background-color: rgba(255, 255, 255, 0.3);
       </layout>
      </widget>
      <widget class="QWidget" name="page_3">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+background-color: rgb(107, 138, 122)
+
+}</string>
+      </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
         <widget class="QTabWidget" name="tabWidget">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    background-color: rgb(183, 181, 151);
+    font: 700 ;
+    color: black; /* Sets the font color to black */
+}
+
+
+
+</string>
+         </property>
          <property name="currentIndex">
           <number>0</number>
          </property>
@@ -382,6 +449,14 @@ background-color: rgba(255, 255, 255, 0.3);
           <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="0">
             <widget class="QTableWidget" name="purchaseHistoryTable">
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+    background-color: rgb(183, 181, 151);
+    font: 700 9pt &quot;Segoe UI&quot;;
+    color: black; /* Sets the font color to black */
+}
+</string>
+             </property>
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
@@ -420,6 +495,14 @@ background-color: rgba(255, 255, 255, 0.3);
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="0">
             <widget class="QTableWidget" name="serviceHistory">
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+    background-color: rgb(183, 181, 151);
+    font: 700 9pt &quot;Segoe UI&quot;;
+    color: black; /* Sets the font color to black */
+}
+</string>
+             </property>
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>

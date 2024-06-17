@@ -173,8 +173,13 @@ class Ui_StaffPage(object):
 
         self.stackedWidget = QStackedWidget(StaffPage)
         self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setStyleSheet(u"")
         self.page = QWidget()
         self.page.setObjectName(u"page")
+        self.page.setStyleSheet(u"QWidget{\n"
+"background-color: rgb(107, 138, 122)\n"
+"\n"
+"}")
         self.verticalLayout_2 = QVBoxLayout(self.page)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout_2 = QHBoxLayout()
@@ -223,6 +228,12 @@ class Ui_StaffPage(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.inventoryTable.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.inventoryTable.setObjectName(u"inventoryTable")
+        self.inventoryTable.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.inventoryTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.inventoryTable.setCornerButtonEnabled(False)
         self.inventoryTable.horizontalHeader().setProperty("showSortIndicator", False)
@@ -234,12 +245,33 @@ class Ui_StaffPage(object):
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
+        self.page_2.setStyleSheet(u"QWidget{\n"
+"background-color: rgb(107, 138, 122)\n"
+"\n"
+"}")
         self.verticalLayout_3 = QVBoxLayout(self.page_2)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.staffSearch = QLineEdit(self.page_2)
         self.staffSearch.setObjectName(u"staffSearch")
+        self.staffSearch.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
 
         self.horizontalLayout_3.addWidget(self.staffSearch)
 
@@ -264,6 +296,12 @@ class Ui_StaffPage(object):
         __qtablewidgetitem9 = QTableWidgetItem()
         self.staffTable.setHorizontalHeaderItem(4, __qtablewidgetitem9)
         self.staffTable.setObjectName(u"staffTable")
+        self.staffTable.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.staffTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.staffTable.horizontalHeader().setStretchLastSection(True)
         self.staffTable.verticalHeader().setVisible(False)
@@ -273,10 +311,23 @@ class Ui_StaffPage(object):
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
+        self.page_3.setStyleSheet(u"QWidget{\n"
+"background-color: rgb(107, 138, 122)\n"
+"\n"
+"}")
         self.gridLayout = QGridLayout(self.page_3)
         self.gridLayout.setObjectName(u"gridLayout")
         self.tabWidget = QTabWidget(self.page_3)
         self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 ;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
         self.gridLayout_2 = QGridLayout(self.tab)
@@ -291,6 +342,12 @@ class Ui_StaffPage(object):
         __qtablewidgetitem12 = QTableWidgetItem()
         self.purchaseHistoryTable.setHorizontalHeaderItem(2, __qtablewidgetitem12)
         self.purchaseHistoryTable.setObjectName(u"purchaseHistoryTable")
+        self.purchaseHistoryTable.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.purchaseHistoryTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.purchaseHistoryTable.horizontalHeader().setDefaultSectionSize(200)
         self.purchaseHistoryTable.horizontalHeader().setStretchLastSection(True)
@@ -323,6 +380,12 @@ class Ui_StaffPage(object):
         __qtablewidgetitem20 = QTableWidgetItem()
         self.serviceHistory.setHorizontalHeaderItem(7, __qtablewidgetitem20)
         self.serviceHistory.setObjectName(u"serviceHistory")
+        self.serviceHistory.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.serviceHistory.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.serviceHistory.horizontalHeader().setStretchLastSection(True)
         self.serviceHistory.verticalHeader().setVisible(False)
@@ -340,7 +403,7 @@ class Ui_StaffPage(object):
 
         self.retranslateUi(StaffPage)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
 
 
