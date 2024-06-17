@@ -99,7 +99,13 @@ class Ui_OrderDialog(object):
         __qtablewidgetitem6.setFont(font);
         self.cartTable.setHorizontalHeaderItem(6, __qtablewidgetitem6)
         self.cartTable.setObjectName(u"cartTable")
-        self.cartTable.setStyleSheet(u"")
+        self.cartTable.setStyleSheet(u"QWidget {\n"
+"\n"
+"    background-color: rgb(218, 211, 190);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.cartTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.cartTable.horizontalHeader().setDefaultSectionSize(100)
         self.cartTable.horizontalHeader().setStretchLastSection(True)
@@ -113,7 +119,10 @@ class Ui_OrderDialog(object):
 
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.formLayout_2.setHorizontalSpacing(700)
+        self.formLayout_2.setLabelAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.formLayout_2.setFormAlignment(Qt.AlignRight|Qt.AlignTop|Qt.AlignTrailing)
+        self.formLayout_2.setHorizontalSpacing(600)
+        self.formLayout_2.setVerticalSpacing(6)
         self.label_2 = QLabel(OrderDialog)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setStyleSheet(u"QLabel {\n"

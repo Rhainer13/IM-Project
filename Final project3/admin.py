@@ -199,6 +199,10 @@ class Ui_AdminPage(object):
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page = QWidget()
         self.page.setObjectName(u"page")
+        self.page.setStyleSheet(u"QWidget{\n"
+"background-color: rgb(107, 138, 122)\n"
+"\n"
+"}")
         self.verticalLayout_2 = QVBoxLayout(self.page)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout_2 = QHBoxLayout()
@@ -279,7 +283,7 @@ class Ui_AdminPage(object):
         __qtablewidgetitem4.setFont(font);
         self.inventoryTable.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.inventoryTable.setObjectName(u"inventoryTable")
-        self.inventoryTable.setStyleSheet(u"QTableWidget {\n"
+        self.inventoryTable.setStyleSheet(u"QWidget {\n"
 "    background-color: rgb(183, 181, 151);\n"
 "    font: 700 9pt \"Segoe UI\";\n"
 "    color: black; /* Sets the font color to black */\n"
@@ -296,6 +300,10 @@ class Ui_AdminPage(object):
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
+        self.page_2.setStyleSheet(u"QWidget{\n"
+"background-color: rgb(107, 138, 122)\n"
+"\n"
+"}")
         self.verticalLayout_3 = QVBoxLayout(self.page_2)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.horizontalLayout_3 = QHBoxLayout()
@@ -379,6 +387,12 @@ class Ui_AdminPage(object):
         __qtablewidgetitem10.setFont(font1);
         self.staffTable.setHorizontalHeaderItem(5, __qtablewidgetitem10)
         self.staffTable.setObjectName(u"staffTable")
+        self.staffTable.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.staffTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.staffTable.horizontalHeader().setStretchLastSection(True)
         self.staffTable.verticalHeader().setVisible(False)
@@ -388,23 +402,20 @@ class Ui_AdminPage(object):
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
+        self.page_3.setStyleSheet(u"QWidget{\n"
+"background-color: rgb(107, 138, 122)\n"
+"\n"
+"}")
         self.gridLayout = QGridLayout(self.page_3)
         self.gridLayout.setObjectName(u"gridLayout")
         self.tabWidget = QTabWidget(self.page_3)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setStyleSheet(u"QTabWidget{\n"
-"background-color: rgb(218, 211, 190);\n"
-"color: black;\n"
-"border: 1px solid rgba(255, 255, 255, 0.5);\n"
-"border-radius: 5px;\n"
-"font-size:16px;\n"
-"text-align: center;\n"
-"width: 120px\n"
+        self.tabWidget.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 ;\n"
+"    color: black; /* Sets the font color to black */\n"
 "}\n"
 "\n"
-"QTabWidget:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
-"}\n"
 "\n"
 "\n"
 "")
@@ -425,6 +436,12 @@ class Ui_AdminPage(object):
         __qtablewidgetitem13.setFont(font1);
         self.purchaseHistoryTable.setHorizontalHeaderItem(2, __qtablewidgetitem13)
         self.purchaseHistoryTable.setObjectName(u"purchaseHistoryTable")
+        self.purchaseHistoryTable.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.purchaseHistoryTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.purchaseHistoryTable.horizontalHeader().setDefaultSectionSize(200)
         self.purchaseHistoryTable.horizontalHeader().setStretchLastSection(True)
@@ -465,6 +482,12 @@ class Ui_AdminPage(object):
         __qtablewidgetitem21.setFont(font1);
         self.serviceHistory.setHorizontalHeaderItem(7, __qtablewidgetitem21)
         self.serviceHistory.setObjectName(u"serviceHistory")
+        self.serviceHistory.setStyleSheet(u"QWidget {\n"
+"    background-color: rgb(183, 181, 151);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.serviceHistory.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.serviceHistory.horizontalHeader().setStretchLastSection(True)
         self.serviceHistory.verticalHeader().setVisible(False)

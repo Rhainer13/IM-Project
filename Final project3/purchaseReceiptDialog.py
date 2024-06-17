@@ -46,6 +46,13 @@ class Ui_PurchaseReceiptDialog(object):
         __qtablewidgetitem5 = QTableWidgetItem()
         self.purchaseReceiptTable.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         self.purchaseReceiptTable.setObjectName(u"purchaseReceiptTable")
+        self.purchaseReceiptTable.setStyleSheet(u"QWidget {\n"
+"\n"
+"    background-color: rgb(218, 211, 190);\n"
+"    font: 700 9pt \"Segoe UI\";\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
         self.purchaseReceiptTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.purchaseReceiptTable.horizontalHeader().setStretchLastSection(True)
 

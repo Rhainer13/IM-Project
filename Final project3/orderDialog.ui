@@ -79,7 +79,13 @@ background-color: rgba(255, 255, 255, 0.3);
    <item>
     <widget class="QTableWidget" name="cartTable">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QWidget {
+
+    background-color: rgb(218, 211, 190);
+    font: 700 9pt &quot;Segoe UI&quot;;
+    color: black; /* Sets the font color to black */
+}
+</string>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -183,8 +189,17 @@ background-color: rgba(255, 255, 255, 0.3);
    </item>
    <item>
     <layout class="QFormLayout" name="formLayout_2">
+     <property name="labelAlignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="formAlignment">
+      <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+     </property>
      <property name="horizontalSpacing">
-      <number>700</number>
+      <number>600</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>6</number>
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">

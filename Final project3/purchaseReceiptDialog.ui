@@ -21,6 +21,15 @@ background-color:rgb(183, 181, 151);
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTableWidget" name="purchaseReceiptTable">
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+
+    background-color: rgb(218, 211, 190);
+    font: 700 9pt &quot;Segoe UI&quot;;
+    color: black; /* Sets the font color to black */
+}
+</string>
+     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
