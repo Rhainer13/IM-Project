@@ -119,11 +119,12 @@ class Ui_OrderDialog(object):
 
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.formLayout_2.setSizeConstraint(QLayout.SetMaximumSize)
+        self.formLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.formLayout_2.setLabelAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.formLayout_2.setFormAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.formLayout_2.setHorizontalSpacing(700)
-        self.formLayout_2.setVerticalSpacing(0)
+        self.formLayout_2.setHorizontalSpacing(6)
+        self.formLayout_2.setVerticalSpacing(6)
+        self.formLayout_2.setContentsMargins(420, -1, 270, -1)
         self.label_2 = QLabel(OrderDialog)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setEnabled(True)
@@ -177,6 +178,7 @@ class Ui_OrderDialog(object):
         self.confirmOrder.setObjectName(u"confirmOrder")
         self.confirmOrder.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(218, 211, 190);\n"
+"\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"
@@ -188,13 +190,11 @@ class Ui_OrderDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"background-color: rgba(255, 255, 255, 0.1);\n"
-"}\n"
-"")
+"                    background-color: #2980b9; /* Darker blue on hover */\n"
+"                }\n"
+"                QPushButton:pressed {\n"
+"                    background-color: #1f618d; /* Even darker blue when pressed */\n"
+"                }")
 
         self.horizontalLayout.addWidget(self.confirmOrder)
 

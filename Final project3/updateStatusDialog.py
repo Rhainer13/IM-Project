@@ -34,6 +34,7 @@ class Ui_UpdateStatusDialog(object):
         self.completed.setObjectName(u"completed")
         self.completed.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(218, 211, 190);\n"
+"\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"
@@ -45,11 +46,11 @@ class Ui_UpdateStatusDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
-"}\n"
-"\n"
-"\n"
-"")
+"                    background-color: #2980b9; /* Darker blue on hover */\n"
+"                }\n"
+"                QPushButton:pressed {\n"
+"                    background-color: #1f618d; /* Even darker blue when pressed */\n"
+"                }")
 
         self.verticalLayout.addWidget(self.completed)
 

@@ -275,6 +275,11 @@ class Ui_AddProductDialog(object):
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.label_6 = QLabel(self.page_2)
         self.label_6.setObjectName(u"label_6")
+        self.label_6.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.label_6)
 
@@ -290,6 +295,23 @@ class Ui_AddProductDialog(object):
         self.ramBrand.addItem("")
         self.ramBrand.addItem("")
         self.ramBrand.setObjectName(u"ramBrand")
+        self.ramBrand.setStyleSheet(u"QComboBox{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.ramBrand)
 
@@ -298,11 +320,33 @@ class Ui_AddProductDialog(object):
         self.ramSize.addItem("")
         self.ramSize.addItem("")
         self.ramSize.setObjectName(u"ramSize")
+        self.ramSize.setStyleSheet(u"QComboBox{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
 
         self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.ramSize)
 
         self.label_7 = QLabel(self.page_2)
         self.label_7.setObjectName(u"label_7")
+        self.label_7.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.label_7)
 
@@ -318,6 +362,11 @@ class Ui_AddProductDialog(object):
         self.formLayout_4.setObjectName(u"formLayout_4")
         self.label_8 = QLabel(self.page_3)
         self.label_8.setObjectName(u"label_8")
+        self.label_8.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_4.setWidget(0, QFormLayout.LabelRole, self.label_8)
 
@@ -329,11 +378,33 @@ class Ui_AddProductDialog(object):
         self.mbBrand.addItem("")
         self.mbBrand.addItem("")
         self.mbBrand.setObjectName(u"mbBrand")
+        self.mbBrand.setStyleSheet(u"QComboBox{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
 
         self.formLayout_4.setWidget(0, QFormLayout.FieldRole, self.mbBrand)
 
         self.label_9 = QLabel(self.page_3)
         self.label_9.setObjectName(u"label_9")
+        self.label_9.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_4.setWidget(1, QFormLayout.LabelRole, self.label_9)
 
@@ -342,6 +413,23 @@ class Ui_AddProductDialog(object):
         self.mbSize.addItem("")
         self.mbSize.addItem("")
         self.mbSize.setObjectName(u"mbSize")
+        self.mbSize.setStyleSheet(u"QComboBox{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
 
         self.formLayout_4.setWidget(1, QFormLayout.FieldRole, self.mbSize)
 
@@ -362,6 +450,7 @@ class Ui_AddProductDialog(object):
         self.confirm.setObjectName(u"confirm")
         self.confirm.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(218, 211, 190);\n"
+"\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"
@@ -373,13 +462,11 @@ class Ui_AddProductDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"background-color: rgba(255, 255, 255, 0.1);\n"
-"}\n"
-"")
+"                    background-color: #2980b9; /* Darker blue on hover */\n"
+"                }\n"
+"                QPushButton:pressed {\n"
+"                    background-color: #1f618d; /* Even darker blue when pressed */\n"
+"                }")
 
         self.horizontalLayout.addWidget(self.confirm)
 
@@ -415,7 +502,7 @@ class Ui_AddProductDialog(object):
 
         self.retranslateUi(AddProductDialog)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(AddProductDialog)

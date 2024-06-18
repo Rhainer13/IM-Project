@@ -64,7 +64,8 @@ class Ui_PurchaseReceiptDialog(object):
 
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.formLayout_2.setHorizontalSpacing(400)
+        self.formLayout_2.setHorizontalSpacing(6)
+        self.formLayout_2.setContentsMargins(470, -1, -1, -1)
         self.label_2 = QLabel(PurchaseReceiptDialog)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setStyleSheet(u"QLabel {\n"
@@ -77,6 +78,7 @@ class Ui_PurchaseReceiptDialog(object):
 
         self.total = QDoubleSpinBox(PurchaseReceiptDialog)
         self.total.setObjectName(u"total")
+        self.total.setMaximumSize(QSize(1677, 16777215))
         self.total.setStyleSheet(u"QDoubleSpinBox{\n"
 "background-color: rgb(218, 211, 190);\n"
 "color: black;\n"

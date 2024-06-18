@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
-    <height>383</height>
+    <width>391</width>
+    <height>386</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@ background-color:rgb(183, 181, 151);
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
-    <enum>QLayout::SetFixedSize</enum>
+    <enum>QLayout::SetMaximumSize</enum>
    </property>
    <item>
     <layout class="QFormLayout" name="formLayout_2">
@@ -240,6 +240,7 @@ text-align: center;
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-color: rgb(218, 211, 190);
+
 color: black;
 border: 1px solid rgba(255, 255, 255, 0.5);
 border-radius: 10px;
@@ -251,13 +252,11 @@ margin-right:25px;
 }
 
 QPushButton:hover {
-background-color: rgba(255, 255, 255, 0.3);
-}
-
-QPushButton:pressed {
-background-color: rgba(255, 255, 255, 0.1);
-}
-</string>
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }</string>
         </property>
         <property name="text">
          <string>Confirm</string>

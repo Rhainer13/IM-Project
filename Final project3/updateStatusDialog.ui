@@ -26,6 +26,7 @@ background-color:rgb(183, 181, 151);
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-color: rgb(218, 211, 190);
+
 color: black;
 border: 1px solid rgba(255, 255, 255, 0.5);
 border-radius: 10px;
@@ -37,11 +38,11 @@ margin-right:25px;
 }
 
 QPushButton:hover {
-background-color: rgba(255, 255, 255, 0.3);
-}
-
-
-</string>
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }</string>
        </property>
        <property name="text">
         <string>Completed</string>

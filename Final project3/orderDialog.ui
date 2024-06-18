@@ -190,7 +190,7 @@ background-color: rgba(255, 255, 255, 0.3);
    <item>
     <layout class="QFormLayout" name="formLayout_2">
      <property name="sizeConstraint">
-      <enum>QLayout::SetMaximumSize</enum>
+      <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <property name="labelAlignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -199,10 +199,16 @@ background-color: rgba(255, 255, 255, 0.3);
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <property name="horizontalSpacing">
-      <number>700</number>
+      <number>6</number>
      </property>
      <property name="verticalSpacing">
-      <number>0</number>
+      <number>6</number>
+     </property>
+     <property name="leftMargin">
+      <number>420</number>
+     </property>
+     <property name="rightMargin">
+      <number>270</number>
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
@@ -288,6 +294,7 @@ background-color: rgba(255, 255, 255, 0.3);
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-color: rgb(218, 211, 190);
+
 color: black;
 border: 1px solid rgba(255, 255, 255, 0.5);
 border-radius: 10px;
@@ -299,13 +306,11 @@ margin-right:25px;
 }
 
 QPushButton:hover {
-background-color: rgba(255, 255, 255, 0.3);
-}
-
-QPushButton:pressed {
-background-color: rgba(255, 255, 255, 0.1);
-}
-</string>
+                    background-color: #2980b9; /* Darker blue on hover */
+                }
+                QPushButton:pressed {
+                    background-color: #1f618d; /* Even darker blue when pressed */
+                }</string>
         </property>
         <property name="text">
          <string>Confirm Order</string>
