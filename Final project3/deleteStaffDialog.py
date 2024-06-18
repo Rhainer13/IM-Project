@@ -74,7 +74,7 @@ class Ui_DeleteStaffDialog(object):
         self.cancel = QPushButton(self.frame)
         self.cancel.setObjectName(u"cancel")
         self.cancel.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(218, 211, 190);\n"
+"background-color: #e74c3c;\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"

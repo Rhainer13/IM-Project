@@ -17,9 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QDialog, QDoubleSpinBox,
     QFormLayout, QFrame, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QPushButton, QSizePolicy,
-    QSpacerItem, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+    QLabel, QLayout, QLineEdit, QPushButton,
+    QSizePolicy, QSpacerItem, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 
 class Ui_OrderDialog(object):
     def setupUi(self, OrderDialog):
@@ -119,17 +119,20 @@ class Ui_OrderDialog(object):
 
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
+        self.formLayout_2.setSizeConstraint(QLayout.SetMaximumSize)
         self.formLayout_2.setLabelAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-        self.formLayout_2.setFormAlignment(Qt.AlignRight|Qt.AlignTop|Qt.AlignTrailing)
-        self.formLayout_2.setHorizontalSpacing(600)
-        self.formLayout_2.setVerticalSpacing(6)
+        self.formLayout_2.setFormAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.formLayout_2.setHorizontalSpacing(700)
+        self.formLayout_2.setVerticalSpacing(0)
         self.label_2 = QLabel(OrderDialog)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setEnabled(True)
+        self.label_2.setMaximumSize(QSize(1677215, 16777215))
         self.label_2.setStyleSheet(u"QLabel {\n"
-"    font: 700 ;\n"
-"    color: black; /* Sets the font color to black */\n"
-"}\n"
-"")
+"                font-weight: bold; /* Sets the font weight to bold */\n"
+"                color: black; /* Sets the font color to black */\n"
+"                margin-left: center; /* Aligns to the right by pushing it to the right */\n"
+"            }")
 
         self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_2)
 
@@ -199,6 +202,7 @@ class Ui_OrderDialog(object):
         self.cancelOrder.setObjectName(u"cancelOrder")
         self.cancelOrder.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(218, 211, 190);\n"
+"\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"
@@ -210,11 +214,11 @@ class Ui_OrderDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
+"background-color: #e74c3c;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"background-color: rgba(255, 255, 255, 0.1);\n"
+"background-color: #e74c3c;\n"
 "}\n"
 "")
 

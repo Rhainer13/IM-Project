@@ -203,6 +203,7 @@ class Ui_UpdateStaffDialog(object):
         self.cancel.setObjectName(u"cancel")
         self.cancel.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(218, 211, 190);\n"
+"\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"
@@ -214,9 +215,12 @@ class Ui_UpdateStaffDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
+"background-color: #e74c3c;\n"
 "}\n"
 "\n"
+"QPushButton:pressed {\n"
+"background-color: #e74c3c;\n"
+"}\n"
 "")
 
         self.horizontalLayout.addWidget(self.cancel)

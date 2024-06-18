@@ -16,8 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QDialog, QFormLayout,
-    QFrame, QHBoxLayout, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+    QFrame, QHBoxLayout, QLabel, QLayout,
+    QLineEdit, QPushButton, QSizePolicy, QVBoxLayout,
+    QWidget)
 
 class Ui_AddStaffDialog(object):
     def setupUi(self, AddStaffDialog):
@@ -29,6 +30,7 @@ class Ui_AddStaffDialog(object):
 "}")
         self.verticalLayout = QVBoxLayout(AddStaffDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setSizeConstraint(QLayout.SetFixedSize)
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
         self.label = QLabel(AddStaffDialog)
@@ -231,6 +233,7 @@ class Ui_AddStaffDialog(object):
         self.cancel.setObjectName(u"cancel")
         self.cancel.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(218, 211, 190);\n"
+"\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 10px;\n"
@@ -242,11 +245,11 @@ class Ui_AddStaffDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"background-color: rgba(255, 255, 255, 0.3);\n"
+"background-color: #e74c3c;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"background-color: rgba(255, 255, 255, 0.1);\n"
+"background-color: #e74c3c;\n"
 "}\n"
 "")
 

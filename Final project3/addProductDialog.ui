@@ -548,6 +548,7 @@ background-color: rgba(255, 255, 255, 0.1);
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-color: rgb(218, 211, 190);
+
 color: black;
 border: 1px solid rgba(255, 255, 255, 0.5);
 border-radius: 10px;
@@ -559,11 +560,11 @@ margin-right:25px;
 }
 
 QPushButton:hover {
-background-color: rgba(255, 255, 255, 0.3);
+background-color: #e74c3c;
 }
 
 QPushButton:pressed {
-background-color: rgba(255, 255, 255, 0.1);
+background-color: #e74c3c;
 }
 </string>
         </property>

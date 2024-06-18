@@ -171,7 +171,8 @@ class Ui_AdminPage(object):
         self.logOut = QPushButton(self.frame)
         self.logOut.setObjectName(u"logOut")
         self.logOut.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(218, 211, 190);\n"
+"\n"
+"background-color: #e74c3c;\n"
 "color: black;\n"
 "border: 1px solid rgba(255, 255, 255, 0.5);\n"
 "border-radius: 5px;\n"
@@ -185,7 +186,7 @@ class Ui_AdminPage(object):
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"background-color: rgba(255, 255, 255, 0.1);\n"
+"background-color: #e74c3c;\n"
 "}\n"
 "\n"
 "")

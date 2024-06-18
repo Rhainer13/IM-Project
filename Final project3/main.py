@@ -509,11 +509,17 @@ class AdminPage(QWidget):
 
                 # Add 'Update Status' button
             update_button = QPushButton("Update Status")
-            update_button.clicked.connect(lambda _, r=row_data: self.openUpdateStatusDialog(r))
 
-                # Check condition and disable button if necessary
-            if row_data[7] in ["Completed", "Cancelled"]:
+                # Function to handle button click and disable button
+            def handle_update_status(r):
+                    # Open dialog (assuming self.openUpdateStatusDialog(r) is the dialog opening function)
+                self.openUpdateStatusDialog(r)
+                    # Disable the button after it's clicked
                 update_button.setEnabled(False)
+
+               # update_button.hide()
+
+            update_button.clicked.connect(lambda _, r=row_data: handle_update_status(r))
 
                 # Apply stylesheet to customize button appearance
             update_button.setStyleSheet(
@@ -521,9 +527,7 @@ class AdminPage(QWidget):
                     QPushButton {
                         background-color: #e74c3c; /* Red */
                         color: black;
-                        border: 1px solid #c0392b;
-                        padding: 6px 12px;
-                        border-radius: 3px;
+
                         font-size: 12px;
                     }
                     QPushButton:hover {
@@ -532,16 +536,27 @@ class AdminPage(QWidget):
                     QPushButton:pressed {
                         background-color: #922b21; /* Even darker red when pressed */
                     }
+                    QPushButton:disabled {
+                        background-color: #cccccc; /* Light gray */
+                        color: #555555; /* Darker gray or subdued text color */
+
+
+                    }
                     """
                 )
+
+                # Check condition and disable button if necessary initially
+            if row_data[7] in ["Completed", "Cancelled"]:
+                update_button.setEnabled(False)
+               # update_button.hide()
 
             button_layout.addWidget(update_button)
 
                 # Set the widget with buttons in the cell
             self.ui.serviceHistory.setCellWidget(row_number, len(row_data)-1, button_widget)
 
-            self.cursor.close()
             self.conn.close()
+            self.cursor.close()
 
     def openAddProductDialog(self):
         self.addProductDialog = AddProductDialog()
@@ -976,38 +991,54 @@ class StaffPage(QWidget):
             button_layout.setContentsMargins(0, 0, 0, 0)
             button_widget.setLayout(button_layout)
 
-                            # Add 'Update Status' button
+                # Add 'Update Status' button
             update_button = QPushButton("Update Status")
-            update_button.clicked.connect(lambda _, r=row_data: self.openUpdateStatusDialog(r))
 
-                            # Check condition and disable button if necessary
-            if row_data[7] in ["Completed", "Cancelled"]:
+                # Function to handle button click and disable button
+            def handle_update_status(r):
+                    # Open dialog (assuming self.openUpdateStatusDialog(r) is the dialog opening function)
+                self.openUpdateStatusDialog(r)
+                    # Disable the button after it's clicked
                 update_button.setEnabled(False)
 
-                            # Apply stylesheet to customize button appearance
+               # update_button.hide()
+
+            update_button.clicked.connect(lambda _, r=row_data: handle_update_status(r))
+
+                # Apply stylesheet to customize button appearance
             update_button.setStyleSheet(
-                                """
-                                QPushButton {
-                                    background-color: #e74c3c; /* Red */
-                                    color: black;
-                                    border: 1px solid #c0392b;
-                                    padding: 6px 12px;
-                                    border-radius: 3px;
-                                    font-size: 12px;
-                                }
-                                QPushButton:hover {
-                                    background-color: #c0392b; /* Darker red on hover */
-                                }
-                                QPushButton:pressed {
-                                    background-color: #922b21; /* Even darker red when pressed */
-                                }
-                                """
-                            )
+                    """
+                    QPushButton {
+                        background-color: #e74c3c; /* Red */
+                        color: black;
+
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #c0392b; /* Darker red on hover */
+                    }
+                    QPushButton:pressed {
+                        background-color: #922b21; /* Even darker red when pressed */
+                    }
+                    QPushButton:disabled {
+                        background-color: #cccccc; /* Light gray */
+                        color: #555555; /* Darker gray or subdued text color */
+
+
+                    }
+                    """
+                )
+
+                # Check condition and disable button if necessary initially
+            if row_data[7] in ["Completed", "Cancelled"]:
+                update_button.setEnabled(False)
+               # update_button.hide()
 
             button_layout.addWidget(update_button)
 
-                            # Set the widget with buttons in the cell
+                # Set the widget with buttons in the cell
             self.ui.serviceHistory.setCellWidget(row_number, len(row_data)-1, button_widget)
+
 
             self.cursor.close()
             self.conn.close()
