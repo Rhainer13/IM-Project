@@ -222,22 +222,66 @@ class Ui_DetailsDialog(object):
         self.formLayout_4.setObjectName(u"formLayout_4")
         self.label_2 = QLabel(self.page_2)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_4.setWidget(0, QFormLayout.LabelRole, self.label_2)
 
         self.ramBrand = QLineEdit(self.page_2)
         self.ramBrand.setObjectName(u"ramBrand")
+        self.ramBrand.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
         self.ramBrand.setReadOnly(True)
 
         self.formLayout_4.setWidget(0, QFormLayout.FieldRole, self.ramBrand)
 
         self.label_7 = QLabel(self.page_2)
         self.label_7.setObjectName(u"label_7")
+        self.label_7.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_4.setWidget(1, QFormLayout.LabelRole, self.label_7)
 
         self.ramSize = QLineEdit(self.page_2)
         self.ramSize.setObjectName(u"ramSize")
+        self.ramSize.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
         self.ramSize.setReadOnly(True)
 
         self.formLayout_4.setWidget(1, QFormLayout.FieldRole, self.ramSize)
@@ -254,22 +298,66 @@ class Ui_DetailsDialog(object):
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.label_8 = QLabel(self.page_3)
         self.label_8.setObjectName(u"label_8")
+        self.label_8.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.label_8)
 
         self.mbBrand = QLineEdit(self.page_3)
         self.mbBrand.setObjectName(u"mbBrand")
+        self.mbBrand.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
         self.mbBrand.setReadOnly(True)
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.mbBrand)
 
         self.label_9 = QLabel(self.page_3)
         self.label_9.setObjectName(u"label_9")
+        self.label_9.setStyleSheet(u"QLabel {\n"
+"    font: 800;\n"
+"    color: black; /* Sets the font color to black */\n"
+"}\n"
+"")
 
         self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.label_9)
 
         self.mbSize = QLineEdit(self.page_3)
         self.mbSize.setObjectName(u"mbSize")
+        self.mbSize.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(218, 211, 190);\n"
+"color: black;\n"
+"\n"
+"\n"
+"font-size: 16px;\n"
+"padding:2px;\n"
+"text-align: center;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"background-color: rgba(255, 255, 255, 0.3);\n"
+"}\n"
+"\n"
+"")
         self.mbSize.setReadOnly(True)
 
         self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.mbSize)

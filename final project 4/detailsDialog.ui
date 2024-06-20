@@ -247,6 +247,13 @@ background-color: rgba(255, 255, 255, 0.3);
         <layout class="QFormLayout" name="formLayout_4">
          <item row="0" column="0">
           <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font: 800;
+    color: black; /* Sets the font color to black */
+}
+</string>
+           </property>
            <property name="text">
             <string>Brand</string>
            </property>
@@ -254,6 +261,25 @@ background-color: rgba(255, 255, 255, 0.3);
          </item>
          <item row="0" column="1">
           <widget class="QLineEdit" name="ramBrand">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+background-color: rgb(218, 211, 190);
+color: black;
+
+
+font-size: 16px;
+padding:2px;
+text-align: center;
+
+
+}
+
+QLineEdit:hover {
+background-color: rgba(255, 255, 255, 0.3);
+}
+
+</string>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -261,6 +287,13 @@ background-color: rgba(255, 255, 255, 0.3);
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_7">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font: 800;
+    color: black; /* Sets the font color to black */
+}
+</string>
+           </property>
            <property name="text">
             <string>Size (GB)</string>
            </property>
@@ -268,6 +301,25 @@ background-color: rgba(255, 255, 255, 0.3);
          </item>
          <item row="1" column="1">
           <widget class="QLineEdit" name="ramSize">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+background-color: rgb(218, 211, 190);
+color: black;
+
+
+font-size: 16px;
+padding:2px;
+text-align: center;
+
+
+}
+
+QLineEdit:hover {
+background-color: rgba(255, 255, 255, 0.3);
+}
+
+</string>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -283,6 +335,13 @@ background-color: rgba(255, 255, 255, 0.3);
         <layout class="QFormLayout" name="formLayout_3">
          <item row="0" column="0">
           <widget class="QLabel" name="label_8">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font: 800;
+    color: black; /* Sets the font color to black */
+}
+</string>
+           </property>
            <property name="text">
             <string>Brand</string>
            </property>
@@ -290,6 +349,25 @@ background-color: rgba(255, 255, 255, 0.3);
          </item>
          <item row="0" column="1">
           <widget class="QLineEdit" name="mbBrand">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+background-color: rgb(218, 211, 190);
+color: black;
+
+
+font-size: 16px;
+padding:2px;
+text-align: center;
+
+
+}
+
+QLineEdit:hover {
+background-color: rgba(255, 255, 255, 0.3);
+}
+
+</string>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -297,6 +375,13 @@ background-color: rgba(255, 255, 255, 0.3);
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_9">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font: 800;
+    color: black; /* Sets the font color to black */
+}
+</string>
+           </property>
            <property name="text">
             <string>Form Factor</string>
            </property>
@@ -304,6 +389,25 @@ background-color: rgba(255, 255, 255, 0.3);
          </item>
          <item row="1" column="1">
           <widget class="QLineEdit" name="mbSize">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+background-color: rgb(218, 211, 190);
+color: black;
+
+
+font-size: 16px;
+padding:2px;
+text-align: center;
+
+
+}
+
+QLineEdit:hover {
+background-color: rgba(255, 255, 255, 0.3);
+}
+
+</string>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
